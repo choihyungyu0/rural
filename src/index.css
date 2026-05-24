@@ -1132,3 +1132,534 @@ img {
     top: 196px;
   }
 }
+
+.appShell {
+  background: #f8fafc;
+}
+
+.appHeader {
+  position: sticky;
+}
+
+.mainNav button.active::after {
+  width: min(126px, 100%);
+}
+
+.analysisPage {
+  min-height: calc(100vh - 74px);
+  padding: 40px 30px 26px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(22, 163, 74, 0.08), transparent 30%),
+    radial-gradient(circle at 88% 10%, rgba(37, 99, 235, 0.07), transparent 30%),
+    #f8fafc;
+}
+
+.analysisIntro {
+  max-width: 1860px;
+  margin: 0 auto 22px;
+}
+
+.pageEyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  margin: 0 0 10px;
+  padding: 0 13px;
+  color: #15803d;
+  background: #e6f7ec;
+  border: 1px solid #bce7c8;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.analysisIntro h1 {
+  margin: 0 0 11px;
+  color: var(--title);
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.16;
+  word-break: keep-all;
+}
+
+.analysisIntro p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.analysisKpiGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1860px;
+  margin: 0 auto 18px;
+}
+
+.analysisKpiGrid .kpiCard {
+  min-height: 150px;
+  padding: 20px 28px;
+  border-color: rgba(226, 232, 240, 0.98);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+}
+
+.analysisKpiGrid .kpiIcon {
+  flex-basis: 96px;
+  width: 96px;
+  height: 96px;
+}
+
+.analysisKpiGrid .kpiIconImage {
+  width: 90px;
+  height: 90px;
+}
+
+.analysisKpiGrid .kpiInfo h2 {
+  margin-bottom: 8px;
+  font-size: 22px;
+}
+
+.analysisKpiGrid .kpiInfo strong {
+  margin-bottom: 9px;
+  font-size: 36px;
+}
+
+.analysisKpiGrid .kpiInfo p {
+  font-size: 16px;
+}
+
+.analysisGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1860px;
+  margin: 0 auto;
+}
+
+.dashboardCard {
+  min-width: 0;
+  min-height: 324px;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 8px;
+  box-shadow:
+    0 11px 24px rgba(15, 23, 42, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.dashboardCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 62px;
+  padding: 0 22px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.dashboardCardIcon {
+  display: grid;
+  flex: 0 0 34px;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.dashboardCardIcon.imageFallback span {
+  font-size: 0;
+}
+
+.dashboardCardIcon.imageFallback::before {
+  width: 18px;
+  height: 18px;
+  content: "";
+  background: linear-gradient(135deg, #16a34a, #2563eb);
+  border-radius: 6px;
+}
+
+.dashboardCardHeader h2 {
+  margin: 0;
+  color: var(--title);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.2;
+  word-break: keep-all;
+}
+
+.dashboardCardBody {
+  min-width: 0;
+  padding: 18px 20px 20px;
+}
+
+.chartFrame,
+.timeChartFrame {
+  width: 100%;
+  height: 236px;
+}
+
+.donutLayout {
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) minmax(128px, 0.74fr);
+  align-items: center;
+  gap: 16px;
+  min-height: 236px;
+}
+
+.donutChartFrame {
+  position: relative;
+  width: 100%;
+  height: 226px;
+}
+
+.donutCenter {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  display: grid;
+  gap: 4px;
+  width: 108px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.donutCenter span {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.donutCenter strong {
+  color: var(--title);
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.donutLegend {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.donutLegend li {
+  display: grid;
+  grid-template-columns: 14px 1fr auto;
+  align-items: center;
+  gap: 9px;
+  color: #334155;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.donutLegend strong {
+  color: var(--title);
+  font-size: 16px;
+  font-weight: 950;
+}
+
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+}
+
+.inflowBars {
+  display: grid;
+  gap: 16px;
+  padding: 6px 0;
+}
+
+.inflowRow {
+  display: grid;
+  grid-template-columns: 34px 52px minmax(90px, 1fr) 74px;
+  align-items: center;
+  gap: 12px;
+}
+
+.rankBadge {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  color: #15803d;
+  background: #e6f7ec;
+  border: 1px solid #bce7c8;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.regionName {
+  color: var(--title);
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.barTrack {
+  position: relative;
+  height: 16px;
+  overflow: hidden;
+  background: #edf2f7;
+  border-radius: 999px;
+}
+
+.barFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  border-radius: inherit;
+}
+
+.inflowRow strong {
+  color: #334155;
+  font-size: 15px;
+  font-weight: 900;
+  text-align: right;
+}
+
+.timeDistribution {
+  display: grid;
+  gap: 6px;
+}
+
+.timeRangeGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding-left: 44px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.regionComposition {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.9fr) minmax(190px, 1fr);
+  align-items: center;
+  gap: 20px;
+  min-height: 236px;
+}
+
+.regionIllustration {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(22, 163, 74, 0.14), transparent 32%),
+    radial-gradient(circle at 72% 70%, rgba(37, 99, 235, 0.14), transparent 34%),
+    linear-gradient(135deg, #f7fbf7, #f4f8ff);
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.regionBlob {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 950;
+  filter: drop-shadow(0 12px 14px rgba(15, 23, 42, 0.18));
+}
+
+.regionBlob span {
+  padding: 6px 15px;
+  background: rgba(15, 23, 42, 0.2);
+  border-radius: 999px;
+}
+
+.hadongBlob {
+  left: 19px;
+  top: 32px;
+  width: 128px;
+  height: 142px;
+  background: linear-gradient(145deg, #65c96e, #168346);
+  clip-path: polygon(28% 0, 57% 8%, 75% 27%, 100% 35%, 85% 60%, 92% 87%, 58% 100%, 37% 86%, 8% 92%, 0 60%, 15% 38%, 6% 16%);
+}
+
+.guryeBlob {
+  right: 20px;
+  top: 56px;
+  width: 118px;
+  height: 128px;
+  background: linear-gradient(145deg, #60a5fa, #2563eb);
+  clip-path: polygon(35% 0, 65% 7%, 78% 25%, 100% 44%, 85% 68%, 88% 94%, 56% 100%, 35% 85%, 9% 90%, 0 62%, 16% 42%, 7% 16%);
+}
+
+.regionConnection {
+  position: absolute;
+  left: 43%;
+  top: 34px;
+  width: 44px;
+  height: 158px;
+  background: linear-gradient(180deg, rgba(20, 184, 166, 0.56), rgba(191, 239, 234, 0.4));
+  clip-path: polygon(40% 0, 67% 16%, 50% 32%, 70% 50%, 46% 67%, 64% 86%, 38% 100%, 20% 84%, 38% 66%, 15% 49%, 34% 32%, 17% 14%);
+}
+
+.compositionList {
+  display: grid;
+  gap: 22px;
+}
+
+.compositionHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 9px;
+  color: var(--title);
+  font-weight: 900;
+}
+
+.compositionHeader span {
+  font-size: 18px;
+}
+
+.compositionHeader strong {
+  font-size: 24px;
+  font-weight: 950;
+}
+
+.compositionTrack {
+  height: 18px;
+  overflow: hidden;
+  background: #edf2f7;
+  border-radius: 999px;
+}
+
+.compositionFill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.analysisNote {
+  max-width: 1860px;
+  margin: 18px auto 0;
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 750;
+  text-align: center;
+}
+
+@media (max-width: 1500px) {
+  .analysisPage {
+    padding-inline: 24px;
+  }
+
+  .analysisIntro h1 {
+    font-size: 34px;
+  }
+
+  .analysisIntro p:last-child {
+    font-size: 18px;
+  }
+
+  .analysisGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .analysisKpiGrid .kpiCard {
+    gap: 18px;
+    padding-inline: 22px;
+  }
+
+  .analysisKpiGrid .kpiInfo strong {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .analysisKpiGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .analysisKpiGrid .kpiCard:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 860px) {
+  .analysisPage {
+    padding: 26px 16px 24px;
+  }
+
+  .analysisIntro h1 {
+    font-size: 29px;
+  }
+
+  .analysisIntro p:last-child {
+    font-size: 16px;
+  }
+
+  .analysisKpiGrid,
+  .analysisGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .analysisKpiGrid .kpiCard:last-child {
+    grid-column: auto;
+  }
+
+  .donutLayout,
+  .regionComposition {
+    grid-template-columns: 1fr;
+  }
+
+  .regionIllustration {
+    max-width: 360px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .analysisIntro h1 {
+    font-size: 25px;
+    word-break: keep-all;
+  }
+
+  .analysisKpiGrid .kpiCard {
+    align-items: flex-start;
+  }
+
+  .analysisKpiGrid .kpiInfo strong {
+    white-space: normal;
+  }
+
+  .dashboardCardHeader {
+    padding-inline: 16px;
+  }
+
+  .dashboardCardHeader h2 {
+    font-size: 19px;
+  }
+
+  .dashboardCardBody {
+    padding-inline: 14px;
+  }
+
+  .chartFrame,
+  .timeChartFrame {
+    height: 230px;
+  }
+
+  .inflowRow {
+    grid-template-columns: 30px 42px minmax(74px, 1fr) 66px;
+    gap: 8px;
+  }
+
+  .inflowRow strong {
+    font-size: 13px;
+  }
+
+  .timeRangeGrid {
+    padding-left: 38px;
+    font-size: 10px;
+  }
+}

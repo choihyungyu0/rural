@@ -1,11 +1,11 @@
 import { Header } from './components/Header'
-import { OverviewPage } from './pages/OverviewPage'
+import { AnalysisPage } from './pages/AnalysisPage'
 
 function App() {
   return (
     <div className="appShell">
-      <Header />
-      <OverviewPage />
+      <Header activeItem="체류·소비 분석" />
+      <AnalysisPage />
     </div>
   )
 }

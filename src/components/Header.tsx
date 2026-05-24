@@ -1,6 +1,10 @@
-import { navItems } from '../data/overviewData'
+import { navItems } from '../data/analysisData'
 
-export function Header() {
+type HeaderProps = {
+  activeItem?: string
+}
+
+export function Header({ activeItem = '체류·소비 분석' }: HeaderProps) {
   return (
     <header className="appHeader">
       <div className="brand">
@@ -16,8 +20,8 @@ export function Header() {
           <button
             key={item}
             type="button"
-            className={item === '개요' ? 'active' : ''}
-            aria-current={item === '개요' ? 'page' : undefined}
+            className={item === activeItem ? 'active' : ''}
+            aria-current={item === activeItem ? 'page' : undefined}
           >
             {item}
           </button>
