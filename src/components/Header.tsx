@@ -2,9 +2,10 @@ import { navItems } from '../data/analysisData'
 
 type HeaderProps = {
   activeItem?: string
+  onNavigate?: (item: string) => void
 }
 
-export function Header({ activeItem = '체류·소비 분석' }: HeaderProps) {
+export function Header({ activeItem = '체류·소비 분석', onNavigate }: HeaderProps) {
   return (
     <header className="appHeader">
       <div className="brand">
@@ -22,6 +23,7 @@ export function Header({ activeItem = '체류·소비 분석' }: HeaderProps) {
             type="button"
             className={item === activeItem ? 'active' : ''}
             aria-current={item === activeItem ? 'page' : undefined}
+            onClick={() => onNavigate?.(item)}
           >
             {item}
           </button>

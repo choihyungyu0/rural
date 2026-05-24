@@ -213,6 +213,17 @@ img {
   padding-bottom: 34px;
 }
 
+.overviewPage .kpiIcon,
+.overviewPage .kpiIcon.red {
+  overflow: visible;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.overviewPage .kpiIconImage {
+  object-fit: contain;
+}
+
 .heroSection {
   position: relative;
   height: 282px;
@@ -1661,5 +1672,1137 @@ img {
   .timeRangeGrid {
     padding-left: 38px;
     font-size: 10px;
+  }
+}
+
+.improvementPage {
+  min-height: calc(100vh - 74px);
+  padding-bottom: 28px;
+  background:
+    radial-gradient(circle at 9% 4%, rgba(22, 163, 74, 0.08), transparent 28%),
+    radial-gradient(circle at 88% 16%, rgba(37, 99, 235, 0.07), transparent 31%),
+    #f8fafc;
+}
+
+.improvementHero {
+  position: relative;
+  height: 214px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #123a29, #266247);
+}
+
+.improvementHeroImage,
+.improvementHeroImage.imageFallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.improvementHeroImage.imageFallback {
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.82);
+  background:
+    linear-gradient(90deg, rgba(13, 51, 37, 0.98), rgba(35, 88, 58, 0.78)),
+    radial-gradient(circle at 78% 18%, rgba(37, 99, 235, 0.38), transparent 30%),
+    linear-gradient(135deg, #143d2c, #2d714d);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.improvementHeroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(4, 22, 17, 0.88) 0%, rgba(7, 51, 35, 0.7) 42%, rgba(7, 51, 35, 0.1) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.2));
+}
+
+.improvementHeroContent {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  width: min(1080px, calc(100% - 96px));
+  height: 100%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.improvementHeroContent h1 {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: 42px;
+  font-weight: 950;
+  line-height: 1.14;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.34);
+  word-break: keep-all;
+}
+
+.improvementHeroContent p {
+  max-width: 940px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.55;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  word-break: keep-all;
+}
+
+.improvementSummaryGrid {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1860px;
+  margin: -28px auto 20px;
+  padding: 0 30px;
+}
+
+.improvementSummaryCard {
+  display: flex;
+  align-items: center;
+  min-height: 166px;
+  gap: 28px;
+  padding: 18px 34px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(226, 232, 240, 0.98);
+  border-radius: 8px;
+  box-shadow:
+    0 13px 28px rgba(15, 23, 42, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.improvementSummaryIcon {
+  display: grid;
+  flex: 0 0 190px;
+  place-items: center;
+  width: 190px;
+  height: 126px;
+  overflow: visible;
+  background: transparent;
+}
+
+.improvementSummaryCard.blue .improvementSummaryIcon {
+  background: transparent;
+}
+
+.improvementSummaryIconImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.improvementSummaryIconImage.imageFallback {
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  background: linear-gradient(135deg, #ecfdf5, #eff6ff);
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+}
+
+.improvementSummaryIconImage.imageFallback span {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.improvementSummaryText {
+  min-width: 0;
+}
+
+.improvementSummaryText p {
+  margin: 0 0 9px;
+  color: #1f2937;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.improvementSummaryText strong {
+  display: block;
+  margin-bottom: 11px;
+  color: #15803d;
+  font-size: 38px;
+  font-weight: 950;
+  line-height: 1.08;
+  word-break: keep-all;
+}
+
+.improvementSummaryCard.blue .improvementSummaryText strong {
+  color: #2563eb;
+}
+
+.improvementSummaryText span {
+  color: #374151;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.improvementMainGrid {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(420px, 1.35fr) minmax(420px, 1.25fr);
+  gap: 18px;
+  max-width: 1860px;
+  margin: 0 auto 18px;
+  padding: 0 30px;
+}
+
+.improvementMainGrid .dashboardCard {
+  min-height: 386px;
+}
+
+.improvementMainGrid .dashboardCardHeader {
+  min-height: 72px;
+}
+
+.improvementMainGrid .dashboardCardIcon {
+  flex-basis: 48px;
+  width: 48px;
+  height: 48px;
+}
+
+.routeMapCard .dashboardCardHeader {
+  min-height: 72px;
+}
+
+.routeMapCard .dashboardCardHeader h2 {
+  font-size: 20px;
+}
+
+.inconvenienceChart {
+  display: grid;
+  gap: 14px;
+}
+
+.inconvenienceRows {
+  display: grid;
+  gap: 16px;
+  padding-top: 4px;
+}
+
+.inconvenienceRow {
+  display: grid;
+  grid-template-columns: 92px minmax(120px, 1fr) 56px;
+  align-items: center;
+  gap: 12px;
+}
+
+.inconvenienceLabel {
+  color: #334155;
+  font-size: 15px;
+  font-weight: 900;
+  word-break: keep-all;
+}
+
+.inconvenienceTrack {
+  position: relative;
+  height: 22px;
+  overflow: hidden;
+  background: #edf2f7;
+  border-radius: 999px;
+}
+
+.inconvenienceFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.08);
+}
+
+.inconvenienceRow strong {
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: 950;
+  text-align: right;
+}
+
+.inconvenienceAxis {
+  display: grid;
+  grid-template-columns: 92px minmax(120px, 1fr) 56px;
+  gap: 12px;
+  color: #94a3b8;
+}
+
+.inconvenienceAxis div {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+}
+
+.inconvenienceAxis small {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.inconvenienceAxis small:not(:first-child) {
+  text-align: center;
+}
+
+.inconvenienceAxis small:last-child {
+  text-align: right;
+}
+
+.chartSourceNote {
+  margin: 2px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 750;
+  text-align: right;
+}
+
+.routeMapFrame {
+  display: grid;
+  place-items: center;
+  min-height: 286px;
+  padding: 10px;
+  background:
+    linear-gradient(180deg, rgba(248, 250, 252, 0.8), rgba(241, 245, 249, 0.76)),
+    #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.routeMapImage,
+.routeMapImage.imageFallback {
+  width: 100%;
+  max-height: 342px;
+  object-fit: contain;
+}
+
+.routeMapImage.imageFallback {
+  display: grid;
+  min-height: 286px;
+  place-items: center;
+  color: #64748b;
+  background:
+    radial-gradient(circle at 28% 38%, rgba(22, 163, 74, 0.14), transparent 24%),
+    radial-gradient(circle at 72% 54%, rgba(37, 99, 235, 0.14), transparent 26%),
+    linear-gradient(135deg, #f0fdf4, #eff6ff);
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.priorityTableWrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.priorityTable {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.priorityTable th {
+  padding: 13px 10px;
+  color: #334155;
+  background: #f1f5f9;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+  font-weight: 950;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.priorityTable td {
+  padding: 14px 10px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  line-height: 1.35;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.priorityTable td:first-child {
+  color: #15803d;
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.priorityTable td:nth-child(2),
+.priorityTable td:nth-child(3) {
+  text-align: left;
+}
+
+.priorityTable tr:nth-child(even) td {
+  background: #fbfdff;
+}
+
+.priorityBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 45px;
+  min-height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.priorityBadge.high {
+  color: #fff;
+  background: linear-gradient(180deg, #53b85d, #27913d);
+  border: 1px solid #2f9e44;
+}
+
+.priorityBadge.medium {
+  color: #fff;
+  background: linear-gradient(180deg, #fbbf24, #f59e0b);
+  border: 1px solid #f59e0b;
+}
+
+.bottomInsightGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1860px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.bottomInsightCard {
+  display: flex;
+  align-items: center;
+  min-height: 154px;
+  gap: 28px;
+  padding: 20px 34px;
+  background: #fff;
+  border: 1px solid rgba(226, 232, 240, 0.98);
+  border-radius: 8px;
+  box-shadow:
+    0 11px 24px rgba(15, 23, 42, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.bottomInsightIcon {
+  display: grid;
+  flex: 0 0 190px;
+  place-items: center;
+  width: 190px;
+  height: 112px;
+  overflow: visible;
+  background: transparent;
+}
+
+.bottomInsightIconImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.bottomInsightIconImage.imageFallback {
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  background: linear-gradient(145deg, #ecfdf5, #dbeafe);
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+}
+
+.bottomInsightIconImage.imageFallback span {
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.bottomInsightCard h2 {
+  margin: 0 0 8px;
+  color: #15803d;
+  font-size: 30px;
+  font-weight: 950;
+}
+
+.bottomInsightCard p {
+  margin: 0;
+  color: #475569;
+  font-size: 19px;
+  font-weight: 750;
+  line-height: 1.58;
+  word-break: keep-all;
+}
+
+.improvementNote {
+  max-width: 1860px;
+  margin: 18px auto 0;
+  padding: 0 30px;
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 750;
+  text-align: center;
+  word-break: keep-all;
+}
+
+@media (max-width: 1500px) {
+  .improvementHeroContent h1 {
+    font-size: 38px;
+  }
+
+  .improvementSummaryText strong {
+    font-size: 30px;
+  }
+
+  .improvementSummaryCard {
+    padding-inline: 24px;
+  }
+
+  .improvementMainGrid {
+    grid-template-columns: minmax(300px, 1fr) minmax(420px, 1.15fr);
+  }
+
+  .priorityCard {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1180px) {
+  .improvementHero {
+    height: 220px;
+  }
+
+  .improvementHeroContent {
+    width: calc(100% - 48px);
+  }
+
+  .improvementSummaryGrid,
+  .improvementMainGrid,
+  .bottomInsightGrid {
+    padding-inline: 24px;
+  }
+
+  .improvementSummaryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .improvementSummaryCard:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .improvementMainGrid,
+  .bottomInsightGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .priorityCard {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .improvementHero {
+    height: 240px;
+  }
+
+  .improvementHeroContent {
+    width: calc(100% - 36px);
+  }
+
+  .improvementHeroContent h1 {
+    font-size: 29px;
+  }
+
+  .improvementHeroContent p {
+    font-size: 15px;
+  }
+
+  .improvementSummaryGrid {
+    grid-template-columns: 1fr;
+    margin-top: -20px;
+    padding-inline: 16px;
+  }
+
+  .improvementSummaryCard,
+  .improvementSummaryCard:last-child {
+    grid-column: auto;
+  }
+
+  .improvementSummaryCard {
+    min-height: 126px;
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .improvementSummaryIcon {
+    flex-basis: 72px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .improvementSummaryIconImage {
+    width: 66px;
+    height: 66px;
+  }
+
+  .improvementSummaryText strong {
+    font-size: 26px;
+  }
+
+  .improvementSummaryText span {
+    font-size: 15px;
+  }
+
+  .improvementMainGrid,
+  .bottomInsightGrid {
+    padding-inline: 16px;
+  }
+
+  .routeMapCard .dashboardCardHeader h2 {
+    font-size: 18px;
+  }
+
+  .inconvenienceRow,
+  .inconvenienceAxis {
+    grid-template-columns: 78px minmax(98px, 1fr) 50px;
+    gap: 8px;
+  }
+
+  .inconvenienceLabel,
+  .inconvenienceRow strong {
+    font-size: 13px;
+  }
+
+  .routeMapFrame {
+    min-height: 220px;
+    padding: 8px;
+  }
+
+  .routeMapImage,
+  .routeMapImage.imageFallback {
+    max-height: 280px;
+  }
+
+  .bottomInsightCard {
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .bottomInsightIcon {
+    flex-basis: 104px;
+    width: 104px;
+    height: 86px;
+  }
+
+  .bottomInsightCard h2 {
+    font-size: 24px;
+  }
+
+  .bottomInsightCard p {
+    font-size: 15px;
+  }
+
+  .improvementNote {
+    padding-inline: 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 520px) {
+  .improvementSummaryCard {
+    align-items: flex-start;
+  }
+
+  .bottomInsightCard {
+    flex-direction: column;
+  }
+
+  .priorityTable {
+    font-size: 13px;
+  }
+}
+
+.analysisPage {
+  background: #ffffff;
+}
+
+.analysisIntro .pageEyebrow {
+  display: none;
+}
+
+.analysisKpiGrid .kpiIcon {
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.analysisKpiGrid .kpiIcon.red {
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.analysisKpiGrid .kpiIconImage {
+  object-fit: contain;
+}
+
+.analysisKpiGrid .kpiIconImage.imageFallback {
+  background: linear-gradient(135deg, #f0fdf4, #eff6ff);
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+}
+
+.analysisKpiGrid .kpiIconImage.imageFallback span {
+  color: #64748b;
+}
+
+@media (min-width: 1181px) {
+  .improvementPage {
+    min-height: calc(100vh - 74px);
+    padding-bottom: 10px;
+  }
+
+  .improvementHero {
+    height: 178px;
+  }
+
+  .improvementHeroContent {
+    width: min(1120px, calc(100% - 96px));
+  }
+
+  .improvementHeroContent h1 {
+    margin-bottom: 10px;
+    font-size: 38px;
+  }
+
+  .improvementHeroContent p {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .improvementSummaryGrid {
+    gap: 18px;
+    max-width: 1800px;
+    margin: -28px auto 14px;
+    padding: 0 52px;
+  }
+
+  .improvementSummaryCard {
+    min-height: 132px;
+    gap: 22px;
+    padding: 12px 26px;
+    overflow: visible;
+  }
+
+  .improvementSummaryIcon {
+    flex-basis: 184px;
+    width: 184px;
+    height: 112px;
+    overflow: visible;
+  }
+
+  .improvementSummaryIconImage {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+  }
+
+  .improvementSummaryText p {
+    margin-bottom: 6px;
+    font-size: 17px;
+  }
+
+  .improvementSummaryText strong {
+    margin-bottom: 7px;
+    font-size: 34px;
+  }
+
+  .improvementSummaryText span {
+    font-size: 18px;
+  }
+
+  .improvementMainGrid {
+    gap: 18px;
+    max-width: 1800px;
+    margin-bottom: 12px;
+    padding: 0 52px;
+  }
+
+  .improvementMainGrid .dashboardCard {
+    min-height: 316px;
+  }
+
+  .improvementMainGrid .dashboardCardHeader,
+  .routeMapCard .dashboardCardHeader {
+    min-height: 58px;
+    padding-inline: 20px;
+  }
+
+  .improvementMainGrid .dashboardCardHeader h2 {
+    font-size: 20px;
+  }
+
+  .routeMapCard .dashboardCardHeader h2 {
+    font-size: 18px;
+  }
+
+  .improvementMainGrid .dashboardCardIcon {
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .improvementMainGrid .dashboardCardBody {
+    padding: 14px 20px 16px;
+  }
+
+  .inconvenienceRows {
+    gap: 13px;
+  }
+
+  .inconvenienceRow {
+    grid-template-columns: 92px minmax(120px, 1fr) 54px;
+  }
+
+  .inconvenienceTrack {
+    height: 20px;
+  }
+
+  .chartSourceNote {
+    margin-top: 0;
+  }
+
+  .routeMapFrame {
+    min-height: 226px;
+    padding: 8px;
+  }
+
+  .routeMapImage,
+  .routeMapImage.imageFallback {
+    max-height: 246px;
+  }
+
+  .routeMapImage.imageFallback {
+    min-height: 226px;
+  }
+
+  .priorityTable {
+    min-width: 0;
+    font-size: 13px;
+  }
+
+  .priorityTable th {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  .priorityTable td {
+    padding: 10px 8px;
+  }
+
+  .priorityTable td:first-child {
+    font-size: 17px;
+  }
+
+  .priorityBadge {
+    min-width: 42px;
+    min-height: 24px;
+    font-size: 12px;
+  }
+
+  .bottomInsightGrid {
+    gap: 18px;
+    max-width: 1800px;
+    padding: 0 52px;
+  }
+
+  .bottomInsightCard {
+    min-height: 116px;
+    gap: 22px;
+    padding: 14px 28px;
+  }
+
+  .bottomInsightIcon {
+    flex-basis: 150px;
+    width: 150px;
+    height: 92px;
+    overflow: visible;
+  }
+
+  .bottomInsightCard h2 {
+    margin-bottom: 6px;
+    font-size: 26px;
+  }
+
+  .bottomInsightCard p {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .improvementNote {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1181px) {
+  .appHeader {
+    height: 74px;
+    padding: 0 38px;
+    grid-template-columns: minmax(280px, 0.95fr) minmax(560px, 1.4fr) minmax(500px, 1fr);
+  }
+
+  .dateInfo {
+    gap: 18px;
+    min-height: 50px;
+    padding: 0 18px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.08);
+  }
+
+  .dateItem {
+    color: #374151;
+    font-weight: 750;
+  }
+
+  .dateItem::before {
+    color: #6b7280;
+    opacity: 0.7;
+  }
+
+  .analysisPage {
+    min-height: calc(100vh - 74px);
+    padding: 24px 46px 12px;
+  }
+
+  .analysisIntro {
+    max-width: 1840px;
+    margin-bottom: 18px;
+  }
+
+  .analysisIntro h1 {
+    margin-bottom: 8px;
+    font-size: 42px;
+    line-height: 1.08;
+  }
+
+  .analysisIntro p:last-child {
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  .analysisKpiGrid {
+    max-width: 1840px;
+    gap: 34px;
+    margin-bottom: 22px;
+  }
+
+  .analysisKpiGrid .kpiCard {
+    min-height: 154px;
+    gap: 28px;
+    padding: 18px 48px;
+    border-radius: 8px;
+    box-shadow: 0 9px 22px rgba(15, 23, 42, 0.11);
+  }
+
+  .analysisKpiGrid .kpiIcon {
+    flex-basis: 162px;
+    width: 162px;
+    height: 130px;
+  }
+
+  .analysisKpiGrid .kpiIconImage {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+  }
+
+  .analysisKpiGrid .kpiInfo h2 {
+    margin-bottom: 9px;
+    font-size: 20px;
+    font-weight: 850;
+  }
+
+  .analysisKpiGrid .kpiInfo strong {
+    margin-bottom: 10px;
+    font-size: 44px;
+    line-height: 1;
+  }
+
+  .analysisKpiGrid .kpiInfo p {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .analysisGrid {
+    max-width: 1840px;
+    gap: 16px 34px;
+  }
+
+  .analysisGrid .dashboardCard {
+    min-height: 258px;
+    border-radius: 8px;
+    box-shadow: 0 9px 20px rgba(15, 23, 42, 0.1);
+  }
+
+  .analysisGrid .dashboardCardHeader {
+    min-height: 56px;
+    padding: 0 24px;
+  }
+
+  .analysisGrid .dashboardCardHeader h2 {
+    font-size: 22px;
+  }
+
+  .analysisGrid .dashboardCardIcon {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .analysisGrid .dashboardCardBody {
+    padding: 12px 22px 14px;
+  }
+
+  .chartFrame,
+  .timeChartFrame {
+    height: 186px;
+  }
+
+  .donutLayout {
+    grid-template-columns: minmax(180px, 1fr) minmax(160px, 0.78fr);
+    min-height: 186px;
+  }
+
+  .donutChartFrame {
+    height: 186px;
+  }
+
+  .donutCenter strong {
+    font-size: 21px;
+  }
+
+  .donutLegend {
+    gap: 12px;
+    padding: 16px 18px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 5px 12px rgba(15, 23, 42, 0.06);
+  }
+
+  .inflowBars {
+    gap: 12px;
+    padding: 2px 6px 0;
+  }
+
+  .inflowRow {
+    grid-template-columns: 42px 56px minmax(120px, 1fr) 86px;
+  }
+
+  .rankBadge {
+    width: auto;
+    height: auto;
+    color: #0f172a;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    font-size: 17px;
+  }
+
+  .rankBadge::after {
+    content: ".";
+  }
+
+  .barTrack {
+    height: 18px;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .barFill {
+    height: 100%;
+    background: linear-gradient(90deg, #2ea84f, #22c55e);
+    border-radius: 0;
+  }
+
+  .timeRangeGrid {
+    padding-left: 44px;
+    font-size: 12px;
+  }
+
+  .regionComposition {
+    grid-template-columns: minmax(190px, 0.95fr) minmax(220px, 1fr);
+    min-height: 186px;
+  }
+
+  .regionIllustration {
+    height: 174px;
+  }
+
+  .hadongBlob {
+    left: 18px;
+    top: 22px;
+    width: 116px;
+    height: 128px;
+  }
+
+  .guryeBlob {
+    right: 18px;
+    top: 48px;
+    width: 106px;
+    height: 116px;
+  }
+
+  .regionConnection {
+    top: 28px;
+    height: 122px;
+  }
+
+  .compositionList {
+    gap: 28px;
+  }
+
+  .compositionHeader {
+    margin-bottom: 8px;
+  }
+
+  .compositionHeader span {
+    font-size: 18px;
+  }
+
+  .compositionHeader strong {
+    font-size: 24px;
+  }
+
+  .analysisNote {
+    max-width: 1840px;
+    margin-top: 14px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .analysisKpiGrid .kpiIcon {
+    flex-basis: 128px;
+    width: 128px;
+    height: 104px;
+  }
+
+  .analysisKpiGrid .kpiIconImage {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .analysisKpiGrid .kpiCard {
+    align-items: center;
+  }
+
+  .analysisKpiGrid .kpiIcon {
+    flex-basis: 96px;
+    width: 96px;
+    height: 86px;
   }
 }
