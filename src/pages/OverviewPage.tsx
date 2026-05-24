@@ -2,7 +2,6 @@ import { CourseCard } from '../components/CourseCard'
 import { HeroSection } from '../components/HeroSection'
 import { InsightItem } from '../components/InsightItem'
 import { KpiCard } from '../components/KpiCard'
-import { LocalImage } from '../components/LocalImage'
 import { OverviewSectionCard } from '../components/OverviewSectionCard'
 import {
   courseItems,
@@ -43,14 +42,9 @@ export function OverviewPage() {
           className="mapPanel"
         >
           <div className="resourceMapFrame">
-            <LocalImage
-              src={overviewAssets.resourceMap}
-              alt="하동과 구례 자원 연계 지도"
-              className="resourceMapImage"
-              fallbackClassName="resourceMapFallback"
-              fallbackLabel="하동과 구례 자원 연계 지도"
-              fallback={<ResourceMapFallback />}
-            />
+            <div className="resourceMapFallback" role="img" aria-label="하동과 구례 자원 연계 지도">
+              <ResourceMapFallback />
+            </div>
           </div>
         </OverviewSectionCard>
 
@@ -76,17 +70,44 @@ function ResourceMapFallback() {
     <div className="fallbackMap">
       <div className="fallbackRegion fallbackHadong">
         <strong>하동</strong>
-        <span className="fallbackNode nodeA">화개장터</span>
-        <span className="fallbackNode nodeB">평사리</span>
-        <span className="fallbackNode nodeC">야생차 체험</span>
+        <span className="fallbackNode nodeA">
+          <span className="fallbackNodeIcon">🏯</span>
+          화개장터
+        </span>
+        <span className="fallbackNode nodeB">
+          <span className="fallbackNodeIcon">🌳</span>
+          평사리
+        </span>
+        <span className="fallbackNode nodeC">
+          <span className="fallbackNodeIcon">🍃</span>
+          야생차 체험
+        </span>
       </div>
       <div className="fallbackRiver" />
       <div className="fallbackRegion fallbackGurye">
         <strong>구례</strong>
-        <span className="fallbackNode nodeD">산수유마을</span>
-        <span className="fallbackNode nodeE">화엄사</span>
-        <span className="fallbackNode nodeF">한옥 숙박</span>
+        <span className="fallbackNode nodeD">
+          산수유마을
+          <span className="fallbackNodeIcon">🌼</span>
+        </span>
+        <span className="fallbackNode nodeE">
+          화엄사
+          <span className="fallbackNodeIcon">🏛️</span>
+        </span>
+        <span className="fallbackNode nodeF">
+          한옥 숙박
+          <span className="fallbackNodeIcon">🏡</span>
+        </span>
       </div>
+      <span className="mapDot dotA" />
+      <span className="mapDot dotB" />
+      <span className="mapDot dotC" />
+      <span className="mapDot dotD" />
+      <span className="mapDot dotE" />
+      <span className="mapDot dotF" />
+      <span className="mapLine lineA" />
+      <span className="mapLine lineB" />
+      <span className="mapLine lineC" />
     </div>
   )
 }

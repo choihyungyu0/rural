@@ -14,7 +14,14 @@ export function HeroSection() {
       <div className="heroOverlay" />
 
       <div className="heroContent">
-        <h1>하동·구례 농촌관광 운영 개선 개요</h1>
+        <h1>
+          <span className="desktopTitle">하동·구례 농촌관광 운영 개선 개요</span>
+          <span className="mobileTitle">
+            하동·구례 농촌관광
+            <br />
+            운영 개선 개요
+          </span>
+        </h1>
         <p>
           데이터 기반으로 하동·구례 농촌관광의 현황을 진단하고,
           <br />

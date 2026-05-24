@@ -30,7 +30,11 @@ export function CourseCard({ item }: CourseCardProps) {
         <p>{item.route}</p>
       </div>
 
-      <button type="button" className={`courseButton ${item.buttonTone}`}>
+      <button
+        type="button"
+        className={`courseButton ${item.buttonTone}`}
+        aria-label={`${item.title} 코스 상세보기`}
+      >
         코스 상세보기
       </button>
     </article>
