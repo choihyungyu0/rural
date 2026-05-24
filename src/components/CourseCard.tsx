@@ -1,38 +1,38 @@
-import { ArrowRight, CalendarDays, Utensils } from 'lucide-react'
-import type { Course } from '../data/dashboardData'
+import type { CourseItem } from '../data/overviewData'
+import { LocalImage } from './LocalImage'
 
 type CourseCardProps = {
-  course: Course
+  item: CourseItem
 }
 
-export function CourseCard({ course }: CourseCardProps) {
+export function CourseCard({ item }: CourseCardProps) {
   return (
-    <article className="rounded-lg border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-5">
-      <div className="flex items-start justify-between gap-4">
-        <span className="grid h-10 w-10 place-items-center rounded-lg bg-emerald-50 text-emerald-700">
-          <Utensils size={20} />
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 px-3 py-1 text-xs font-bold text-sky-700">
-          <CalendarDays size={13} />
-          {course.duration}
-        </span>
+    <article className="courseCard">
+      <LocalImage
+        src={item.imageSrc}
+        alt={item.imageAlt}
+        className="courseImage"
+        fallbackClassName="courseImageFallback"
+        fallbackLabel={item.title}
+      />
+
+      <div className="courseContent">
+        <h3>{item.title}</h3>
+
+        <div className="badgeRow">
+          {item.badges.map((badge, index) => (
+            <span className={index === 0 ? 'dayBadge' : 'courseBadge'} key={badge}>
+              {badge}
+            </span>
+          ))}
+        </div>
+
+        <p>{item.route}</p>
       </div>
-      <h3 className="mt-4 text-lg font-extrabold text-slate-950">{course.title}</h3>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {course.tags.map((tag) => (
-          <span key={tag} className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">
-            {tag}
-          </span>
-        ))}
-      </div>
-      <div className="mt-5 space-y-2 text-sm font-semibold text-slate-600">
-        <p>{course.target}</p>
-        <p>{course.spend}</p>
-      </div>
-      <div className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-slate-950">
-        패키지 구성안
-        <ArrowRight size={15} />
-      </div>
+
+      <button type="button" className={`courseButton ${item.buttonTone}`}>
+        코스 상세보기
+      </button>
     </article>
   )
 }

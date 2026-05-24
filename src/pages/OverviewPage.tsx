@@ -1,60 +1,92 @@
-import { CheckCircle2 } from 'lucide-react'
 import { CourseCard } from '../components/CourseCard'
-import { DashboardCard } from '../components/DashboardCard'
-import { Hero } from '../components/Hero'
+import { HeroSection } from '../components/HeroSection'
+import { InsightItem } from '../components/InsightItem'
 import { KpiCard } from '../components/KpiCard'
-import { ResourceMap } from '../components/ResourceMap'
-import { kpiMetrics, overviewInsights, prototypeNote, recommendedCourses } from '../data/dashboardData'
+import { LocalImage } from '../components/LocalImage'
+import { OverviewSectionCard } from '../components/OverviewSectionCard'
+import {
+  courseItems,
+  insightItems,
+  kpiItems,
+  overviewAssets,
+} from '../data/overviewData'
 
 export function OverviewPage() {
   return (
-    <div className="space-y-6">
-      <Hero
-        variant="scenic"
-        title="하동·구례 농촌관광 운영 개선 개요"
-        subtitle="데이터 기반으로 하동·구례 농촌관광의 현황을 진단하고, 체류·소비 증대를 위한 운영 개선 방향을 제안합니다."
-        diagnosis="방문자 수와 소비는 증가하고 있으나, 숙박 전환율은 감소해 미식·체험·숙박 연계 강화가 필요합니다."
-      />
+    <main className="overviewPage">
+      <HeroSection />
 
-      <section className="grid grid-cols-4 gap-5">
-        {kpiMetrics.map((metric) => (
-          <KpiCard key={metric.label} metric={metric} />
+      <section className="kpiGrid" aria-label="핵심 성과 지표">
+        {kpiItems.map((item) => (
+          <KpiCard item={item} key={item.title} />
         ))}
       </section>
 
-      <section className="grid grid-cols-[0.86fr_1.14fr] gap-6">
-        <DashboardCard title="핵심 분석 요약">
-          <div className="space-y-4">
-            {overviewInsights.map((insight) => (
-              <div key={insight.title} className="flex gap-3 rounded-lg border border-slate-100 bg-slate-50 p-4">
-                <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-emerald-100 text-emerald-700">
-                  <CheckCircle2 size={16} />
-                </span>
-                <div>
-                  <h3 className="font-extrabold text-slate-950">{insight.title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-slate-600">{insight.body}</p>
-                </div>
-              </div>
+      <section className="overviewGrid" aria-label="개요 상세 정보">
+        <OverviewSectionCard
+          title="핵심 분석 요약"
+          iconSrc={overviewAssets.searchIcon}
+          iconAlt="핵심 분석 요약 아이콘"
+          className="summaryPanel"
+        >
+          <div className="insightList">
+            {insightItems.map((item) => (
+              <InsightItem item={item} key={item.title} />
             ))}
           </div>
-        </DashboardCard>
+        </OverviewSectionCard>
 
-        <DashboardCard title="미식·체험·숙박 연계 관광 동선">
-          <ResourceMap />
-        </DashboardCard>
+        <OverviewSectionCard
+          title="하동·구례 자원 연계 개요"
+          iconSrc={overviewAssets.mapIcon}
+          iconAlt="자원 연계 지도 아이콘"
+          className="mapPanel"
+        >
+          <div className="resourceMapFrame">
+            <LocalImage
+              src={overviewAssets.resourceMap}
+              alt="하동과 구례 자원 연계 지도"
+              className="resourceMapImage"
+              fallbackClassName="resourceMapFallback"
+              fallbackLabel="하동과 구례 자원 연계 지도"
+              fallback={<ResourceMapFallback />}
+            />
+          </div>
+        </OverviewSectionCard>
+
+        <OverviewSectionCard
+          title="추천 체류형 코스"
+          iconSrc={overviewAssets.suitcaseIcon}
+          iconAlt="추천 체류형 코스 아이콘"
+          className="coursePanel"
+        >
+          <div className="courseList">
+            {courseItems.map((item) => (
+              <CourseCard item={item} key={item.title} />
+            ))}
+          </div>
+        </OverviewSectionCard>
       </section>
+    </main>
+  )
+}
 
-      <DashboardCard title="추천 체류형 코스">
-        <div className="grid grid-cols-2 gap-5">
-          {recommendedCourses.map((course) => (
-            <CourseCard key={course.title} course={course} />
-          ))}
-        </div>
-      </DashboardCard>
-
-      <p className="rounded-lg border border-slate-200 bg-white px-5 py-4 text-xs font-semibold text-slate-500">
-        {prototypeNote}
-      </p>
+function ResourceMapFallback() {
+  return (
+    <div className="fallbackMap">
+      <div className="fallbackRegion fallbackHadong">
+        <strong>하동</strong>
+        <span className="fallbackNode nodeA">화개장터</span>
+        <span className="fallbackNode nodeB">평사리</span>
+        <span className="fallbackNode nodeC">야생차 체험</span>
+      </div>
+      <div className="fallbackRiver" />
+      <div className="fallbackRegion fallbackGurye">
+        <strong>구례</strong>
+        <span className="fallbackNode nodeD">산수유마을</span>
+        <span className="fallbackNode nodeE">화엄사</span>
+        <span className="fallbackNode nodeF">한옥 숙박</span>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,28 @@
+import { overviewAssets } from '../data/overviewData'
+import { LocalImage } from './LocalImage'
+
+export function HeroSection() {
+  return (
+    <section className="heroSection">
+      <LocalImage
+        src={overviewAssets.heroBg}
+        alt="하동과 구례 농촌관광 풍경"
+        className="heroImage"
+        fallbackClassName="heroImageFallback"
+        fallbackLabel="하동·구례 농촌관광 풍경"
+      />
+      <div className="heroOverlay" />
+
+      <div className="heroContent">
+        <h1>하동·구례 농촌관광 운영 개선 개요</h1>
+        <p>
+          데이터 기반으로 하동·구례 농촌관광의 현황을 진단하고,
+          <br />
+          체류·소비 증대를 위한 운영 개선 방향을 제안합니다.
+        </p>
+      </div>
+
+      <p className="heroNotice">※ 수치는 제안서 이해를 위한 예시입니다.</p>
+    </section>
+  )
+}
