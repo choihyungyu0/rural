@@ -35,7 +35,7 @@ export function CourseCard({ item }: CourseCardProps) {
         className={`courseButton ${item.buttonTone}`}
         aria-label={`${item.title} 코스 상세보기`}
       >
-        코스 상세보기
+        →
       </button>
     </article>
   )
