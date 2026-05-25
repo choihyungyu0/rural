@@ -131,8 +131,10 @@ img {
   height: 100%;
 }
 
-.mainNav button {
+.mainNav :is(a, button) {
   position: relative;
+  display: inline-flex;
+  align-items: center;
   height: 100%;
   padding: 0;
   color: #1f2937;
@@ -140,14 +142,15 @@ img {
   cursor: pointer;
   font-size: 17px;
   font-weight: 800;
+  text-decoration: none;
   white-space: nowrap;
 }
 
-.mainNav button.active {
+.mainNav :is(a, button).active {
   color: var(--green-dark);
 }
 
-.mainNav button.active::after {
+.mainNav :is(a, button).active::after {
   position: absolute;
   left: 50%;
   bottom: 0;
@@ -492,10 +495,10 @@ img {
 }
 
 .resourceMapFrame {
-  height: 282px;
+  height: 320px;
   margin: 0 24px 24px;
   overflow: hidden;
-  background: linear-gradient(90deg, #eef7e8 0%, #eef7e8 50%, #edf5ff 50%, #edf5ff 100%);
+  background: #eef6f1;
   border-radius: 8px;
 }
 
@@ -508,6 +511,183 @@ img {
 .resourceMapFallback {
   width: 100%;
   height: 100%;
+}
+
+.overviewResourceMap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  overflow: hidden;
+  background: #eef6f1;
+  border: 1px solid #d8e2e9;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.overviewResourceMapCanvas,
+.overviewResourceMap .leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+}
+
+.overviewResourceMap .leaflet-control-attribution {
+  max-width: 240px;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.overviewResourceMarkerIcon {
+  background: transparent;
+  border: 0;
+}
+
+.overviewResourceMarker {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 4px rgba(15, 23, 42, 0.12),
+    0 7px 14px rgba(15, 23, 42, 0.28);
+}
+
+.overviewResourceMarkerHadong,
+.overviewResourceLegendDot.hadong {
+  background: #16a34a;
+}
+
+.overviewResourceMarkerGurye,
+.overviewResourceLegendDot.gurye {
+  background: #2563eb;
+}
+
+.overviewResourceStatus,
+.overviewResourceLegend,
+.overviewResourceSource {
+  position: absolute;
+  z-index: 500;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.93);
+  border: 1px solid rgba(203, 213, 225, 0.88);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+  backdrop-filter: blur(8px);
+}
+
+.overviewResourceStatus {
+  top: 12px;
+  left: 12px;
+  max-width: calc(100% - 24px);
+  padding: 7px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.overviewResourceStatus.api {
+  color: #166534;
+  border-color: rgba(22, 163, 74, 0.28);
+}
+
+.overviewResourceStatus.fallback {
+  color: #1d4ed8;
+  border-color: rgba(37, 99, 235, 0.28);
+}
+
+.overviewResourceLegend {
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.overviewResourceLegend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.overviewResourceLegendDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.18);
+}
+
+.overviewResourceSource {
+  left: 12px;
+  bottom: 12px;
+  max-width: calc(100% - 180px);
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.overviewResourcePopup {
+  display: grid;
+  gap: 6px;
+  min-width: 180px;
+  max-width: 230px;
+  color: #0f172a;
+}
+
+.overviewResourcePopup h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 950;
+  line-height: 1.3;
+}
+
+.overviewResourcePopup p {
+  margin: 0;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.overviewResourcePopupImage {
+  width: 100%;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.overviewResourceRegionLabel {
+  justify-self: start;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.overviewResourceRegionLabel.hadong {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.overviewResourceRegionLabel.gurye {
+  color: #1d4ed8;
+  background: #dbeafe;
 }
 
 .fallbackMap {
@@ -930,12 +1110,12 @@ img {
     overflow: visible;
   }
 
-  .mainNav button {
+  .mainNav :is(a, button) {
     height: 30px;
     font-size: 14px;
   }
 
-  .mainNav button.active::after {
+  .mainNav :is(a, button).active::after {
     width: 42px;
     height: 4px;
   }
@@ -1087,8 +1267,23 @@ img {
   }
 
   .resourceMapFrame {
-    height: 660px;
+    height: 320px;
     margin: 0 16px 20px;
+  }
+
+  .overviewResourceMap {
+    min-height: 300px;
+  }
+
+  .overviewResourceLegend {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .overviewResourceSource {
+    left: 10px;
+    bottom: 52px;
+    max-width: calc(100% - 20px);
   }
 
   .fallbackMap {
@@ -1152,7 +1347,7 @@ img {
   position: sticky;
 }
 
-.mainNav button.active::after {
+.mainNav :is(a, button).active::after {
   width: min(126px, 100%);
 }
 
@@ -1547,6 +1742,166 @@ img {
   display: block;
   height: 100%;
   border-radius: inherit;
+}
+
+.regionMapColumn {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.analysisRegionMiniMap {
+  position: relative;
+  width: 100%;
+  height: 178px;
+  min-height: 160px;
+  overflow: hidden;
+  background: #eef6f1;
+  border: 1px solid #d8e2e9;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.analysisMiniMapCanvas,
+.analysisRegionMiniMap .leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+}
+
+.analysisRegionMiniMap .leaflet-control-attribution {
+  max-width: 148px;
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+.analysisMiniMapMarkerIcon {
+  background: transparent;
+  border: 0;
+}
+
+.analysisMiniMapMarker {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 3px rgba(15, 23, 42, 0.12),
+    0 6px 12px rgba(15, 23, 42, 0.24);
+}
+
+.analysisMiniMapMarkerHadong,
+.analysisMiniMapLegendDot.hadong {
+  background: #16a34a;
+}
+
+.analysisMiniMapMarkerGurye,
+.analysisMiniMapLegendDot.gurye {
+  background: #2563eb;
+}
+
+.analysisMiniMapSource,
+.analysisMiniMapLegend {
+  position: absolute;
+  z-index: 500;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(203, 213, 225, 0.88);
+  box-shadow: 0 7px 15px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.analysisMiniMapSource {
+  top: 8px;
+  left: 8px;
+  max-width: calc(100% - 16px);
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: #475569;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.analysisMiniMapLegend {
+  right: 8px;
+  bottom: 8px;
+  display: grid;
+  gap: 4px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.analysisMiniMapLegend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.analysisMiniMapLegendDot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.16);
+}
+
+.analysisMiniMapPopup {
+  display: grid;
+  gap: 4px;
+  min-width: 150px;
+  color: #0f172a;
+}
+
+.analysisMiniMapPopup h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 950;
+  line-height: 1.25;
+}
+
+.analysisMiniMapPopup p {
+  margin: 0;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+.analysisMiniMapRegionLabel {
+  justify-self: start;
+  padding: 3px 7px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.analysisMiniMapRegionLabel.hadong {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.analysisMiniMapRegionLabel.gurye {
+  color: #1d4ed8;
+  background: #dbeafe;
+}
+
+.compositionMapNote {
+  margin: 0;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1.35;
+  text-align: center;
+  word-break: keep-all;
 }
 
 .analysisNote {
@@ -3037,5 +3392,199 @@ img {
     width: auto;
     height: auto;
     object-fit: contain;
+  }
+}
+
+.routeMapFrame .leafletTourMap {
+  width: 100%;
+}
+
+.leafletTourMap {
+  position: relative;
+  height: clamp(280px, 32vh, 360px);
+  min-height: 280px;
+  overflow: hidden;
+  background: #eef6f1;
+  border: 1px solid #d8e2e9;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.tourMapCanvas,
+.leafletTourMap .leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+}
+
+.leafletTourMap .leaflet-control-attribution {
+  font-size: 10px;
+}
+
+.tourMapMarkerIcon {
+  background: transparent;
+  border: 0;
+}
+
+.tourMapMarker {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 4px rgba(15, 23, 42, 0.12),
+    0 7px 14px rgba(15, 23, 42, 0.28);
+}
+
+.tourMapMarkerHadong,
+.tourMapLegendDot.hadong {
+  background: #16a34a;
+}
+
+.tourMapMarkerGurye,
+.tourMapLegendDot.gurye {
+  background: #2563eb;
+}
+
+.tourMapStatus,
+.tourMapLegend,
+.tourMapSourceNote {
+  position: absolute;
+  z-index: 500;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(203, 213, 225, 0.88);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+  backdrop-filter: blur(8px);
+}
+
+.tourMapStatus {
+  top: 12px;
+  left: 12px;
+  max-width: calc(100% - 24px);
+  padding: 7px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.tourMapStatus.api {
+  color: #166534;
+  border-color: rgba(22, 163, 74, 0.28);
+}
+
+.tourMapStatus.fallback {
+  color: #1d4ed8;
+  border-color: rgba(37, 99, 235, 0.28);
+}
+
+.tourMapLegend {
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.tourMapLegend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.tourMapLegendDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.18);
+}
+
+.tourMapSourceNote {
+  left: 12px;
+  bottom: 12px;
+  max-width: calc(100% - 180px);
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.tourMapPopup {
+  display: grid;
+  gap: 6px;
+  min-width: 190px;
+  max-width: 230px;
+  color: #0f172a;
+}
+
+.tourMapPopup h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 950;
+  line-height: 1.3;
+}
+
+.tourMapPopup p {
+  margin: 0;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.tourMapPopupImage {
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.tourMapRegionLabel {
+  justify-self: start;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.tourMapRegionLabel.hadong {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.tourMapRegionLabel.gurye {
+  color: #1d4ed8;
+  background: #dbeafe;
+}
+
+@media (max-width: 760px) {
+  .leafletTourMap {
+    height: 300px;
+  }
+
+  .tourMapLegend,
+  .tourMapSourceNote {
+    bottom: 10px;
+  }
+
+  .tourMapSourceNote {
+    max-width: calc(100% - 24px);
+    transform: translateY(-44px);
   }
 }

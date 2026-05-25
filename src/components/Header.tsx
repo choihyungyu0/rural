@@ -1,11 +1,10 @@
-import { navItems } from '../data/analysisData'
+import { navigationItems, type NavigationHash } from '../data/navigation'
 
 type HeaderProps = {
-  activeItem?: string
-  onNavigate?: (item: string) => void
+  activeHash: NavigationHash
 }
 
-export function Header({ activeItem = '체류·소비 분석', onNavigate }: HeaderProps) {
+export function Header({ activeHash }: HeaderProps) {
   return (
     <header className="appHeader">
       <div className="brand">
@@ -17,16 +16,15 @@ export function Header({ activeItem = '체류·소비 분석', onNavigate }: Hea
       </div>
 
       <nav className="mainNav" aria-label="주요 메뉴">
-        {navItems.map((item) => (
-          <button
-            key={item}
-            type="button"
-            className={item === activeItem ? 'active' : ''}
-            aria-current={item === activeItem ? 'page' : undefined}
-            onClick={() => onNavigate?.(item)}
+        {navigationItems.map((item) => (
+          <a
+            key={item.hash}
+            href={item.hash}
+            className={item.hash === activeHash ? 'active' : ''}
+            aria-current={item.hash === activeHash ? 'page' : undefined}
           >
-            {item}
-          </button>
+            {item.label}
+          </a>
         ))}
       </nav>
 

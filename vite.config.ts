@@ -5,4 +5,13 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  server: {
+    proxy: {
+      '/tourapi': {
+        target: 'https://apis.data.go.kr/B551011/KorService2',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/tourapi/, ''),
+      },
+    },
+  },
 })

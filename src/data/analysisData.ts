@@ -40,8 +40,6 @@ export type RegionCompositionItem = {
   color: string
 }
 
-export const navItems = ['개요', '방문 현황', '체류·소비 분석', '인사이트', '개선 제안']
-
 export const analysisAssets = {
   visitor: '/images/analysis/icon-visitor.png',
   clock: '/images/analysis/icon-clock.png',

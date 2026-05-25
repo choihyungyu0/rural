@@ -4,6 +4,7 @@ import { ImageWithFallback } from '../components/ImageWithFallback'
 import { ImprovementPriorityTable } from '../components/ImprovementPriorityTable'
 import { ImprovementSummaryCard } from '../components/ImprovementSummaryCard'
 import { InconvenienceBarChart } from '../components/InconvenienceBarChart'
+import LeafletTourMap from '../components/LeafletTourMap'
 import { bottomCards, improvementAssets, summaryCards } from '../data/improvementData'
 
 export function ImprovementPage() {
@@ -20,7 +21,9 @@ export function ImprovementPage() {
         <div className="improvementHeroOverlay" aria-hidden="true" />
         <div className="improvementHeroContent">
           <h1 id="improvement-title">불편요소 개선 및 실행 전략</h1>
-          <p>설문 기반 불편요소와 이동 동선을 바탕으로 우선 개선 과제와 실행 방향을 제안합니다.</p>
+          <p>
+            설문 기반 불편요소와 이동 동선을 바탕으로 우선 개선 과제와 실행 방향을 제안합니다.
+          </p>
         </div>
       </section>
 
@@ -47,13 +50,7 @@ export function ImprovementPage() {
           className="routeMapCard"
         >
           <div className="routeMapFrame">
-            <ImageWithFallback
-              src={improvementAssets.routeMap}
-              alt="하동·구례 연계 동선 및 이동 불편 예상 구간 지도"
-              className="routeMapImage"
-              fallbackClassName="routeMapFallback"
-              fallbackLabel="하동·구례 연계 동선 지도"
-            />
+            <LeafletTourMap />
           </div>
         </DashboardCard>
 
@@ -74,7 +71,7 @@ export function ImprovementPage() {
       </section>
 
       <p className="improvementNote">
-        ※ 수치는 제안서 이해를 위한 예시이며, 실제 적용 시 최신 자료 및 설문 결과로 대체됩니다.
+        위 수치는 제안 이해를 위한 예시이며, 실제 적용 시 최신 자료 및 설문 결과로 대체됩니다.
       </p>
     </main>
   )

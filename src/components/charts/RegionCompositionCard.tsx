@@ -1,16 +1,12 @@
 import { regionComposition } from '../../data/analysisData'
+import AnalysisRegionMiniMap from '../AnalysisRegionMiniMap'
 
 export function RegionCompositionCard() {
   return (
     <div className="regionComposition">
-      <div className="regionIllustration" aria-hidden="true">
-        <div className="regionBlob hadongBlob">
-          <span>하동</span>
-        </div>
-        <div className="regionBlob guryeBlob">
-          <span>구례</span>
-        </div>
-        <span className="regionConnection" />
+      <div className="regionMapColumn">
+        <AnalysisRegionMiniMap />
+        <p className="compositionMapNote">지도 데이터: 한국관광공사 TourAPI + OpenStreetMap</p>
       </div>
 
       <div className="compositionList" aria-label="지역별 방문자 구성비">
