@@ -8,10 +8,7 @@ export function Header({ activeHash }: HeaderProps) {
   return (
     <header className="appHeader">
       <div className="brand">
-        <div className="logoMark" aria-hidden="true">
-          <span />
-          <span />
-        </div>
+        <img className="logoMark" src="/images/logo.png" alt="하동·구례 농촌관광 로고" />
         <strong>하동·구례 농촌관광</strong>
       </div>
 

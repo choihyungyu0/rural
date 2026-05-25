@@ -1,0 +1,262 @@
+{
+  "source": "한국관광 데이터랩 지역별 관광 현황 다운로드 CSV",
+  "period": "2025-11~2026-04",
+  "regions": [
+    "경상남도 하동군",
+    "전라남도 구례군"
+  ],
+  "generatedFromUploads": [
+    "20260526012926_하동군_202511-202604_데이터랩_다운로드.zip",
+    "20260526012936_하동군_202511-202604_데이터랩_다운로드.zip",
+    "20260526012948_하동군_202511-202604_데이터랩_다운로드.zip",
+    "20260526013010_하동군_202511-202604_데이터랩_다운로드.zip",
+    "20260526013053_구례군_202511-202604_데이터랩_다운로드.zip",
+    "20260526013110_구례군_202511-202604_데이터랩_다운로드.zip",
+    "20260526013116_구례군_202511-202604_데이터랩_다운로드.zip",
+    "20260526013123_구례군_202511-202604_데이터랩_다운로드.zip"
+  ],
+  "kpis": {
+    "totalVisitors": 7173142,
+    "totalVisitorsUnit": "연인원",
+    "visitorYoYChangeRate": 6.4,
+    "averageStayHours": 15.3,
+    "averageStayMinutes": 917.4,
+    "lodgingVisitRate": 11.0,
+    "tourismSpendingEokKrw": 696.7,
+    "tourismSpendingThousandKrw": 69665157,
+    "estimatedSpendingPerVisitKrw": 9712,
+    "hadongVisitorShare": 54.6,
+    "guryeVisitorShare": 45.4
+  },
+  "monthlyVisitors": [
+    {
+      "month": "2025-11",
+      "hadong": 669529,
+      "gurye": 539774,
+      "total": 1209303
+    },
+    {
+      "month": "2025-12",
+      "hadong": 467089,
+      "gurye": 335906,
+      "total": 802995
+    },
+    {
+      "month": "2026-01",
+      "hadong": 427962,
+      "gurye": 336570,
+      "total": 764532
+    },
+    {
+      "month": "2026-02",
+      "hadong": 569653,
+      "gurye": 428421,
+      "total": 998074
+    },
+    {
+      "month": "2026-03",
+      "hadong": 1017888,
+      "gurye": 1003986,
+      "total": 2021874
+    },
+    {
+      "month": "2026-04",
+      "hadong": 761306,
+      "gurye": 615058,
+      "total": 1376364
+    }
+  ],
+  "stayTimeTrend": [
+    {
+      "month": "2025-11",
+      "hadongMinutes": 907,
+      "guryeMinutes": 768,
+      "hadongHours": 15.1,
+      "guryeHours": 12.8
+    },
+    {
+      "month": "2025-12",
+      "hadongMinutes": 1181,
+      "guryeMinutes": 1120,
+      "hadongHours": 19.7,
+      "guryeHours": 18.7
+    },
+    {
+      "month": "2026-01",
+      "hadongMinutes": 1157,
+      "guryeMinutes": 1236,
+      "hadongHours": 19.3,
+      "guryeHours": 20.6
+    },
+    {
+      "month": "2026-02",
+      "hadongMinutes": 1153,
+      "guryeMinutes": 1243,
+      "hadongHours": 19.2,
+      "guryeHours": 20.7
+    },
+    {
+      "month": "2026-03",
+      "hadongMinutes": 742,
+      "guryeMinutes": 695,
+      "hadongHours": 12.4,
+      "guryeHours": 11.6
+    },
+    {
+      "month": "2026-04",
+      "hadongMinutes": 821,
+      "guryeMinutes": 735,
+      "hadongHours": 13.7,
+      "guryeHours": 12.2
+    }
+  ],
+  "lodgingRateTrend": [
+    {
+      "month": "2025-11",
+      "hadong": 10.5,
+      "gurye": 11.2,
+      "weighted": 10.8
+    },
+    {
+      "month": "2025-12",
+      "hadong": 12.8,
+      "gurye": 13.1,
+      "weighted": 12.9
+    },
+    {
+      "month": "2026-01",
+      "hadong": 10.6,
+      "gurye": 12.5,
+      "weighted": 11.4
+    },
+    {
+      "month": "2026-02",
+      "hadong": 15.5,
+      "gurye": 16.3,
+      "weighted": 15.8
+    },
+    {
+      "month": "2026-03",
+      "hadong": 7.5,
+      "gurye": 8.1,
+      "weighted": 7.8
+    },
+    {
+      "month": "2026-04",
+      "hadong": 10.3,
+      "gurye": 11.8,
+      "weighted": 11.0
+    }
+  ],
+  "tourismSpendingTrend": [
+    {
+      "month": "2025-11",
+      "hadongThousandKrw": 8048313,
+      "guryeThousandKrw": 3698628,
+      "totalMillionKrw": 11746.9,
+      "totalEokKrw": 117.5
+    },
+    {
+      "month": "2025-12",
+      "hadongThousandKrw": 6552394,
+      "guryeThousandKrw": 2638613,
+      "totalMillionKrw": 9191.0,
+      "totalEokKrw": 91.9
+    },
+    {
+      "month": "2026-01",
+      "hadongThousandKrw": 5822168,
+      "guryeThousandKrw": 2610142,
+      "totalMillionKrw": 8432.3,
+      "totalEokKrw": 84.3
+    },
+    {
+      "month": "2026-02",
+      "hadongThousandKrw": 6658707,
+      "guryeThousandKrw": 3132821,
+      "totalMillionKrw": 9791.5,
+      "totalEokKrw": 97.9
+    },
+    {
+      "month": "2026-03",
+      "hadongThousandKrw": 9791820,
+      "guryeThousandKrw": 6283129,
+      "totalMillionKrw": 16074.9,
+      "totalEokKrw": 160.7
+    },
+    {
+      "month": "2026-04",
+      "hadongThousandKrw": 10017313,
+      "guryeThousandKrw": 4411109,
+      "totalMillionKrw": 14428.4,
+      "totalEokKrw": 144.3
+    }
+  ],
+  "spendingRatioActual": [
+    {
+      "name": "식음료업",
+      "value": 35.8,
+      "amountThousandKrw": 24936485
+    },
+    {
+      "name": "운송업",
+      "value": 34.3,
+      "amountThousandKrw": 23868211
+    },
+    {
+      "name": "쇼핑업",
+      "value": 24.0,
+      "amountThousandKrw": 16687572
+    },
+    {
+      "name": "숙박업",
+      "value": 2.9,
+      "amountThousandKrw": 2014688
+    },
+    {
+      "name": "여가서비스업",
+      "value": 2.7,
+      "amountThousandKrw": 1879986
+    },
+    {
+      "name": "의료웰니스업",
+      "value": 0.4,
+      "amountThousandKrw": 278218
+    }
+  ],
+  "inflowTop5ByNavigationRatioWeighted": [
+    {
+      "name": "전라남도 광양시",
+      "ratio": 15.5
+    },
+    {
+      "name": "전라남도 순천시",
+      "ratio": 12.0
+    },
+    {
+      "name": "경상남도 진주시",
+      "ratio": 6.4
+    },
+    {
+      "name": "전북특별자치도 남원시",
+      "ratio": 5.7
+    },
+    {
+      "name": "전라남도 구례군",
+      "ratio": 5.6
+    }
+  ],
+  "regionComposition": {
+    "hadong": 54.6,
+    "gurye": 45.4
+  },
+  "dataNotes": [
+    "방문자 수는 한국관광 데이터랩의 방문자 수(연인원) 추이 CSV를 사용했습니다.",
+    "체류시간은 평균 체류시간 추이 CSV의 분 단위 값을 시간으로 변환했습니다.",
+    "숙박방문자 비율은 방문자 수로 가중평균했습니다.",
+    "관광소비는 관광소비 추이_외지인 CSV의 전체 소비액(천원)을 합산했습니다.",
+    "소비유형은 외지인 관광소비 추이의 업종대분류별 소비액을 합산해 비율로 계산했습니다.",
+    "유입지역 TOP은 유입 출발지-유출 목적지 분포 CSV의 유입 비율을 지역 방문자 규모로 가중해 계산했습니다.",
+    "시간대별 방문 분포 데이터는 업로드 CSV에 포함되지 않아 별도 데이터가 필요합니다."
+  ]
+}

@@ -8,16 +8,23 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-import { averageStayTimeTrend } from '../../data/analysisData'
+import type { MonthlyTrendItem } from '../../data/analysisData'
 
-const formatMonth = (month: string) => month.replace('2025년 ', '').replace('2026년 ', '')
-const formatHours = (value: number) => `${value}시간`
+type StayTimeTrendChartProps = {
+  data: MonthlyTrendItem[]
+}
 
-export function StayTimeTrendChart() {
+const formatMonth = (month: string) => month.replace(/^\d{4}년\s*/, '')
+const formatHours = (value: number) => `${Number(value).toFixed(1)}시간`
+
+export function StayTimeTrendChart({ data }: StayTimeTrendChartProps) {
+  const maxHours = Math.max(5, ...data.flatMap((item) => [item.하동, item.구례]))
+  const yAxisMax = Math.ceil(maxHours + 2)
+
   return (
     <div className="chartFrame" role="img" aria-label="하동과 구례의 평균 체류시간 추이 선형 차트">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={averageStayTimeTrend} margin={{ top: 12, right: 16, bottom: 4, left: 0 }}>
+        <LineChart data={data} margin={{ top: 12, right: 16, bottom: 4, left: 0 }}>
           <CartesianGrid stroke="#e5e7eb" strokeDasharray="4 4" vertical={false} />
           <XAxis
             dataKey="month"
@@ -28,8 +35,7 @@ export function StayTimeTrendChart() {
             interval={0}
           />
           <YAxis
-            domain={[0, 5]}
-            ticks={[0, 1, 2, 3, 4, 5]}
+            domain={[0, yAxisMax]}
             tickFormatter={formatHours}
             tick={{ fill: '#64748b', fontSize: 12, fontWeight: 700 }}
             tickLine={false}

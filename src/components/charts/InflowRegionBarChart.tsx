@@ -1,21 +1,25 @@
-import { inflowRegions } from '../../data/analysisData'
+import type { InflowRegionItem } from '../../data/analysisData'
 
-const maxVisitors = Math.max(...inflowRegions.map((item) => item.visitors))
+type InflowRegionBarChartProps = {
+  data: InflowRegionItem[]
+}
 
-export function InflowRegionBarChart() {
+export function InflowRegionBarChart({ data }: InflowRegionBarChartProps) {
+  const maxRatio = Math.max(1, ...data.map((item) => item.ratio))
+
   return (
-    <div className="inflowBars" role="img" aria-label="유입 지역 상위 5개 지역 가로 막대 차트">
-      {inflowRegions.map((item) => (
+    <div className="inflowBars" role="img" aria-label="유입 지역 상위 5개 지역 비율 가로 막대 차트">
+      {data.map((item) => (
         <div className="inflowRow" key={item.region}>
           <span className="rankBadge">{item.rank}</span>
           <span className="regionName">{item.region}</span>
           <div className="barTrack" aria-hidden="true">
             <span
               className="barFill"
-              style={{ width: `${(item.visitors / maxVisitors) * 100}%` }}
+              style={{ width: `${(item.ratio / maxRatio) * 100}%` }}
             />
           </div>
-          <strong>{item.visitors.toLocaleString()}</strong>
+          <strong>{item.ratio.toFixed(1)}%</strong>
         </div>
       ))}
     </div>

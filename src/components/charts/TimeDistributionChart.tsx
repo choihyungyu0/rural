@@ -1,14 +1,22 @@
 import { Bar, BarChart, CartesianGrid, Cell, LabelList, ResponsiveContainer, XAxis, YAxis } from 'recharts'
-import { timeDistribution } from '../../data/analysisData'
+import type { TimeDistributionItem } from '../../data/analysisData'
 
-const chartData = timeDistribution.map((item) => ({
-  ...item,
-  percentLabel: `${item.value}%`,
-}))
+type TimeDistributionChartProps = {
+  data: TimeDistributionItem[]
+}
 
-export function TimeDistributionChart() {
+export function TimeDistributionChart({ data }: TimeDistributionChartProps) {
+  const chartData = data.map((item) => ({
+    ...item,
+    percentLabel: `${item.value}%`,
+  }))
+
   return (
     <div className="timeDistribution">
+      <div className="chartBadgeRow">
+        <span className="chartDataBadge">예시 데이터</span>
+      </div>
+
       <div className="timeChartFrame" role="img" aria-label="시간대별 방문 분포 세로 막대 차트">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={chartData} margin={{ top: 28, right: 10, bottom: 4, left: -18 }}>
@@ -37,7 +45,7 @@ export function TimeDistributionChart() {
       </div>
 
       <div className="timeRangeGrid" aria-label="시간대 설명">
-        {timeDistribution.map((item) => (
+        {data.map((item) => (
           <span key={item.label}>({item.timeRange})</span>
         ))}
       </div>

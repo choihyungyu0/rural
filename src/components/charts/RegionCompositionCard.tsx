@@ -1,20 +1,24 @@
-import { regionComposition } from '../../data/analysisData'
+import type { RegionCompositionItem } from '../../data/analysisData'
 import AnalysisRegionMiniMap from '../AnalysisRegionMiniMap'
 
-export function RegionCompositionCard() {
+type RegionCompositionCardProps = {
+  data: RegionCompositionItem[]
+}
+
+export function RegionCompositionCard({ data }: RegionCompositionCardProps) {
   return (
     <div className="regionComposition">
       <div className="regionMapColumn">
-        <AnalysisRegionMiniMap />
-        <p className="compositionMapNote">지도 데이터: 한국관광공사 TourAPI + OpenStreetMap</p>
+        <AnalysisRegionMiniMap data={data} />
+        <p className="compositionMapNote">지도 데이터: OpenStreetMap · 비중 데이터: 한국관광 데이터랩</p>
       </div>
 
       <div className="compositionList" aria-label="지역별 방문자 구성비">
-        {regionComposition.map((item) => (
+        {data.map((item) => (
           <div className="compositionItem" key={item.region}>
             <div className="compositionHeader">
               <span>{item.region}</span>
-              <strong>{item.value}%</strong>
+              <strong>{item.value.toFixed(1)}%</strong>
             </div>
             <div className="compositionTrack">
               <span

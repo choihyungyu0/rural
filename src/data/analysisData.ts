@@ -3,7 +3,7 @@ export type ChangeTone = 'green' | 'red'
 export type KpiItem = {
   title: string
   value: string
-  change: string
+  change?: string
   changeTone: ChangeTone
   iconSrc: string
   iconAlt: string
@@ -24,7 +24,7 @@ export type SpendingRatioItem = {
 export type InflowRegionItem = {
   rank: number
   region: string
-  visitors: number
+  ratio: number
 }
 
 export type TimeDistributionItem = {
@@ -40,10 +40,22 @@ export type RegionCompositionItem = {
   color: string
 }
 
+export type AnalysisDashboardData = {
+  kpiItems: KpiItem[]
+  monthlyVisitorTrend: MonthlyTrendItem[]
+  averageStayTimeTrend: MonthlyTrendItem[]
+  spendingRatio: SpendingRatioItem[]
+  inflowRegions: InflowRegionItem[]
+  timeDistribution: TimeDistributionItem[]
+  regionComposition: RegionCompositionItem[]
+  totalSpendingLabel: string
+}
+
 export const analysisAssets = {
   visitor: '/images/analysis/icon-visitor.png',
   clock: '/images/analysis/icon-clock.png',
   card: '/images/analysis/icon-card.png',
+  bed: '/images/overview/icon-bed.png',
   trend: '/images/analysis/icon-trend.png',
   stayTime: '/images/analysis/icon-stay-time.png',
   location: '/images/analysis/icon-location.png',
@@ -70,12 +82,20 @@ export const kpiItems: KpiItem[] = [
     iconAlt: '평균 체류시간 아이콘',
   },
   {
-    title: '1인당 관광소비',
-    value: '154,800원',
-    change: '전년 동기간 대비 ↑ 9.3%',
+    title: '관광소비액',
+    value: '444.7억원',
+    change: '예시 데이터',
     changeTone: 'green',
     iconSrc: analysisAssets.card,
-    iconAlt: '1인당 관광소비 아이콘',
+    iconAlt: '관광소비액 아이콘',
+  },
+  {
+    title: '숙박방문자 비율',
+    value: '34.6%',
+    change: '예시 데이터',
+    changeTone: 'red',
+    iconSrc: analysisAssets.bed,
+    iconAlt: '숙박방문자 비율 아이콘',
   },
 ]
 
@@ -105,11 +125,11 @@ export const spendingRatio: SpendingRatioItem[] = [
 ]
 
 export const inflowRegions: InflowRegionItem[] = [
-  { rank: 1, region: '진주', visitors: 56420 },
-  { rank: 2, region: '순천', visitors: 49310 },
-  { rank: 3, region: '광주', visitors: 43780 },
-  { rank: 4, region: '부산', visitors: 28650 },
-  { rank: 5, region: '사천', visitors: 19620 },
+  { rank: 1, region: '진주', ratio: 18.4 },
+  { rank: 2, region: '순천', ratio: 16.1 },
+  { rank: 3, region: '광주', ratio: 14.3 },
+  { rank: 4, region: '부산', ratio: 9.4 },
+  { rank: 5, region: '사천', ratio: 6.4 },
 ]
 
 export const timeDistribution: TimeDistributionItem[] = [
@@ -123,3 +143,14 @@ export const regionComposition: RegionCompositionItem[] = [
   { region: '하동', value: 59.4, color: '#16a34a' },
   { region: '구례', value: 40.6, color: '#2563eb' },
 ]
+
+export const demoAnalysisData: AnalysisDashboardData = {
+  kpiItems,
+  monthlyVisitorTrend,
+  averageStayTimeTrend,
+  spendingRatio,
+  inflowRegions,
+  timeDistribution,
+  regionComposition,
+  totalSpendingLabel: '444.7억원',
+}

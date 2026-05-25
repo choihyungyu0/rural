@@ -1,37 +1,76 @@
 import L from 'leaflet'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from 'react-leaflet'
-import { fallbackTourPlaces, tourKeywords } from '../data/tourMapData'
-import { searchTourPlacesByKeyword, type TourPlace } from '../services/tourApi'
+import type { RegionCompositionItem } from '../data/analysisData'
 
 type Coordinate = [number, number]
-type MarkerRegion = 'hadong' | 'gurye'
+type RegionKey = 'hadong' | 'gurye'
 
-const mapCenter: Coordinate = [35.19, 127.56]
-const hadongSignals = ['하동', '화개', '평사리', '야생차']
-
-function isHadongPlace(place: TourPlace) {
-  const target = `${place.title} ${place.address}`
-  return hadongSignals.some((signal) => target.includes(signal))
+type AnalysisRegionMiniMapProps = {
+  data: RegionCompositionItem[]
 }
 
-function getMarkerRegion(place: TourPlace): MarkerRegion {
-  return isHadongPlace(place) ? 'hadong' : 'gurye'
+type RegionMarker = {
+  key: RegionKey
+  label: string
+  percentage: number
+  position: Coordinate
+  color: string
 }
 
-function createMiniMarkerIcon(region: MarkerRegion) {
-  const className = region === 'hadong' ? 'analysisMiniMapMarkerHadong' : 'analysisMiniMapMarkerGurye'
+const mapCenter: Coordinate = [35.14, 127.6]
+const hadongPosition: Coordinate = [35.067, 127.751]
+const guryePosition: Coordinate = [35.2025, 127.4622]
+
+const markerConfig = {
+  hadong: {
+    label: '하동',
+    fallbackPercentage: 59.4,
+    color: '#16a34a',
+    position: hadongPosition,
+  },
+  gurye: {
+    label: '구례',
+    fallbackPercentage: 40.6,
+    color: '#2563eb',
+    position: guryePosition,
+  },
+} satisfies Record<RegionKey, Omit<RegionMarker, 'key' | 'percentage'> & { fallbackPercentage: number }>
+
+function formatPercentage(value: number) {
+  return value.toFixed(1)
+}
+
+function getRegionPercentage(data: RegionCompositionItem[], region: RegionKey, fallbackIndex: number) {
+  const config = markerConfig[region]
+  const matchedItem = data.find((item) => item.region.includes(config.label)) ?? data[fallbackIndex]
+
+  return Number.isFinite(matchedItem?.value) ? matchedItem.value : config.fallbackPercentage
+}
+
+function getBubbleSize(percentage: number) {
+  return Math.round(Math.min(78, Math.max(54, 44 + percentage * 0.45)))
+}
+
+function createBubbleIcon(marker: RegionMarker) {
+  const size = getBubbleSize(marker.percentage)
+  const percentage = formatPercentage(marker.percentage)
 
   return L.divIcon({
-    className: 'analysisMiniMapMarkerIcon',
-    html: `<span class="analysisMiniMapMarker ${className}"></span>`,
-    iconSize: [14, 14],
-    iconAnchor: [7, 7],
-    popupAnchor: [0, -8],
+    className: 'analysisMiniMapBubbleIcon',
+    html: `
+      <div class="analysisMiniMapBubble" style="width:${size}px;height:${size}px;background:${marker.color};">
+        <span>${marker.label}</span>
+        <strong>${percentage}%</strong>
+      </div>
+    `,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
+    popupAnchor: [0, -(size / 2)],
   })
 }
 
-function ResizeMapOnMount({ places }: { places: TourPlace[] }) {
+function ResizeMapOnMount({ resizeKey }: { resizeKey: string }) {
   const map = useMap()
 
   useEffect(() => {
@@ -40,113 +79,78 @@ function ResizeMapOnMount({ places }: { places: TourPlace[] }) {
     }, 150)
 
     return () => window.clearTimeout(timer)
-  }, [map, places])
+  }, [map, resizeKey])
 
   return null
 }
 
-export default function AnalysisRegionMiniMap() {
-  const [places, setPlaces] = useState<TourPlace[]>(fallbackTourPlaces)
-  const dataSource = places.some((place) => place.source === 'api') ? 'api' : 'fallback'
+export default function AnalysisRegionMiniMap({ data }: AnalysisRegionMiniMapProps) {
+  const markers = useMemo<RegionMarker[]>(() => {
+    const hadongPercentage = getRegionPercentage(data, 'hadong', 0)
+    const guryePercentage = getRegionPercentage(data, 'gurye', 1)
+
+    return [
+      {
+        key: 'hadong',
+        label: markerConfig.hadong.label,
+        percentage: hadongPercentage,
+        position: markerConfig.hadong.position,
+        color: markerConfig.hadong.color,
+      },
+      {
+        key: 'gurye',
+        label: markerConfig.gurye.label,
+        percentage: guryePercentage,
+        position: markerConfig.gurye.position,
+        color: markerConfig.gurye.color,
+      },
+    ]
+  }, [data])
 
   const markerIcons = useMemo(
-    () => ({
-      hadong: createMiniMarkerIcon('hadong'),
-      gurye: createMiniMarkerIcon('gurye'),
-    }),
-    [],
+    () =>
+      markers.reduce<Record<RegionKey, L.DivIcon>>(
+        (icons, marker) => ({
+          ...icons,
+          [marker.key]: createBubbleIcon(marker),
+        }),
+        {} as Record<RegionKey, L.DivIcon>,
+      ),
+    [markers],
   )
 
-  const routePositions = useMemo<Coordinate[]>(
-    () => places.map((place) => [place.lat, place.lng]),
-    [places],
-  )
-
-  useEffect(() => {
-    let isActive = true
-
-    async function loadTourPlaces() {
-      try {
-        const keywordResults = await Promise.all(
-          tourKeywords.map((keyword) => searchTourPlacesByKeyword(keyword)),
-        )
-
-        const nextPlaces = keywordResults.map((results, index) => {
-          return results[0] ?? fallbackTourPlaces[index]
-        })
-
-        if (isActive && nextPlaces.some((place) => place.source === 'api')) {
-          setPlaces(nextPlaces)
-        }
-      } catch {
-        if (isActive) {
-          setPlaces(fallbackTourPlaces)
-        }
-      }
-    }
-
-    void loadTourPlaces()
-
-    return () => {
-      isActive = false
-    }
-  }, [])
+  const resizeKey = markers.map((marker) => `${marker.key}-${marker.percentage}`).join('|')
 
   return (
-    <div
-      className="analysisRegionMiniMap"
-      aria-label="하동·구례 관광 자원 미니 지도"
-      data-source={dataSource}
-    >
+    <div className="analysisRegionMiniMap" aria-label="하동·구례 방문자 구성비 미니 지도">
       <MapContainer
         center={mapCenter}
-        zoom={10}
+        zoom={9}
         zoomControl={false}
         scrollWheelZoom={false}
         className="analysisMiniMapCanvas"
       >
-        <ResizeMapOnMount places={places} />
+        <ResizeMapOnMount resizeKey={resizeKey} />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Polyline
-          positions={routePositions}
-          pathOptions={{ color: '#2563eb', dashArray: '6 8', weight: 3, opacity: 0.72 }}
+          positions={[hadongPosition, guryePosition]}
+          pathOptions={{ color: '#64748b', weight: 2, opacity: 0.62 }}
         />
-        {places.map((place) => {
-          const region = getMarkerRegion(place)
-          const regionLabel = region === 'hadong' ? '하동 연계 자원' : '구례 연계 자원'
-
-          return (
-            <Marker
-              icon={markerIcons[region]}
-              key={`${place.id}-${place.source}`}
-              position={[place.lat, place.lng]}
-            >
-              <Popup>
-                <article className="analysisMiniMapPopup">
-                  <span className={`analysisMiniMapRegionLabel ${region}`}>{regionLabel}</span>
-                  <h3>{place.title}</h3>
-                  <p>{place.address}</p>
-                </article>
-              </Popup>
-            </Marker>
-          )
-        })}
+        {markers.map((marker) => (
+          <Marker icon={markerIcons[marker.key]} key={marker.key} position={marker.position}>
+            <Popup>
+              <strong className="analysisMiniMapPopupText">
+                {marker.label} 방문 비중: {formatPercentage(marker.percentage)}%
+              </strong>
+            </Popup>
+          </Marker>
+        ))}
       </MapContainer>
 
-      <span className="analysisMiniMapSource">TourAPI + OpenStreetMap</span>
-      <div className="analysisMiniMapLegend" aria-label="미니 지도 범례">
-        <span>
-          <i className="analysisMiniMapLegendDot hadong" aria-hidden="true" />
-          하동 자원
-        </span>
-        <span>
-          <i className="analysisMiniMapLegendDot gurye" aria-hidden="true" />
-          구례 자원
-        </span>
-      </div>
+      <span className="analysisMiniMapSource">한국관광 데이터랩 방문자 비중</span>
     </div>
   )
 }

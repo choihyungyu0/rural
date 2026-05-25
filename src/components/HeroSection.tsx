@@ -1,7 +1,11 @@
 import { overviewAssets } from '../data/overviewData'
 import { LocalImage } from './LocalImage'
 
-export function HeroSection() {
+type HeroSectionProps = {
+  notice: string
+}
+
+export function HeroSection({ notice }: HeroSectionProps) {
   return (
     <section className="heroSection">
       <LocalImage
@@ -29,7 +33,7 @@ export function HeroSection() {
         </p>
       </div>
 
-      <p className="heroNotice">※ 수치는 제안서 이해를 위한 예시입니다.</p>
+      <p className="heroNotice">{notice}</p>
     </section>
   )
 }

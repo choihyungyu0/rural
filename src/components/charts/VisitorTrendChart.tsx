@@ -8,16 +8,20 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-import { monthlyVisitorTrend } from '../../data/analysisData'
+import type { MonthlyTrendItem } from '../../data/analysisData'
 
-const formatMonth = (month: string) => month.replace('2025년 ', '').replace('2026년 ', '')
-const formatVisitors = (value: number) => `${Math.round(value / 10000)}만`
+type VisitorTrendChartProps = {
+  data: MonthlyTrendItem[]
+}
 
-export function VisitorTrendChart() {
+const formatMonth = (month: string) => month.replace(/^\d{4}년\s*/, '')
+const formatVisitors = (value: number) => `${Math.round(value / 10000).toLocaleString('ko-KR')}만`
+
+export function VisitorTrendChart({ data }: VisitorTrendChartProps) {
   return (
     <div className="chartFrame" role="img" aria-label="하동과 구례의 월별 방문자 추이 선형 차트">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={monthlyVisitorTrend} margin={{ top: 12, right: 16, bottom: 4, left: 0 }}>
+        <LineChart data={data} margin={{ top: 12, right: 16, bottom: 4, left: 0 }}>
           <CartesianGrid stroke="#e5e7eb" strokeDasharray="4 4" vertical={false} />
           <XAxis
             dataKey="month"
