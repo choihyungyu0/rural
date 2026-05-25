@@ -8,7 +8,7 @@ import {
 } from '../data/inconvenienceSegments'
 import { fallbackTourPlaces, tourKeywords } from '../data/tourMapData'
 import { fetchRoadRoute, type RouteCoordinate } from '../services/roadRoute'
-import { searchTourPlacesByKeyword, type TourPlace } from '../services/tourApi'
+import { searchTourPlacesByKeywords, type TourPlace } from '../services/tourApi'
 
 type MapStatus = 'loading' | 'api' | 'fallback'
 type MarkerRegion = 'hadong' | 'gurye'
@@ -153,9 +153,7 @@ export default function LeafletTourMap() {
       setStatus('loading')
 
       try {
-        const keywordResults = await Promise.all(
-          tourKeywords.map((keyword) => searchTourPlacesByKeyword(keyword)),
-        )
+        const keywordResults = await searchTourPlacesByKeywords(tourKeywords)
 
         const nextPlaces = keywordResults.map((results, index) => {
           return results[0] ?? fallbackTourPlaces[index]

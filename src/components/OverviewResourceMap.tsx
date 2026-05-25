@@ -2,7 +2,7 @@ import L from 'leaflet'
 import { useEffect, useMemo, useState } from 'react'
 import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from 'react-leaflet'
 import { fallbackTourPlaces, tourKeywords } from '../data/tourMapData'
-import { searchTourPlacesByKeyword, type TourPlace } from '../services/tourApi'
+import { searchTourPlacesByKeywords, type TourPlace } from '../services/tourApi'
 
 type MapStatus = 'loading' | 'api' | 'fallback'
 type MarkerRegion = 'hadong' | 'gurye'
@@ -77,9 +77,7 @@ export default function OverviewResourceMap() {
       setStatus('loading')
 
       try {
-        const keywordResults = await Promise.all(
-          tourKeywords.map((keyword) => searchTourPlacesByKeyword(keyword)),
-        )
+        const keywordResults = await searchTourPlacesByKeywords(tourKeywords)
 
         const nextPlaces = keywordResults.map((results, index) => {
           return results[0] ?? fallbackTourPlaces[index]

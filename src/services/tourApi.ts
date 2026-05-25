@@ -1,6 +1,19 @@
 const BASE_URL = import.meta.env.DEV
   ? '/tourapi'
-  : 'https://apis.data.go.kr/B551011/KorService2'
+  : ''
+
+const keywordCache = new Map<string, TourPlace[]>()
+const keywordRequests = new Map<string, Promise<TourPlace[]>>()
+const keywordBatchRequests = new Map<string, Promise<TourPlace[][]>>()
+let tourApiQueue = Promise.resolve()
+const storageCacheKey = 'rural-tour-api-keyword-cache-v1'
+
+export class TourApiQuotaError extends Error {
+  constructor() {
+    super('TourAPI token quota exceeded')
+    this.name = 'TourApiQuotaError'
+  }
+}
 
 export interface TourPlace {
   id: string
@@ -29,6 +42,68 @@ function normalizeItems(value: unknown): UnknownRecord[] {
   }
 
   return isRecord(value) ? [value] : []
+}
+
+function isTourPlace(value: unknown): value is TourPlace {
+  return (
+    isRecord(value) &&
+    typeof value.id === 'string' &&
+    typeof value.title === 'string' &&
+    typeof value.address === 'string' &&
+    typeof value.lat === 'number' &&
+    Number.isFinite(value.lat) &&
+    typeof value.lng === 'number' &&
+    Number.isFinite(value.lng) &&
+    value.source === 'api'
+  )
+}
+
+function readStoredKeywordCache() {
+  if (typeof window === 'undefined') {
+    return {}
+  }
+
+  try {
+    const storedValue = window.localStorage.getItem(storageCacheKey)
+    const parsedValue: unknown = storedValue ? JSON.parse(storedValue) : {}
+
+    if (!isRecord(parsedValue)) {
+      return {}
+    }
+
+    return Object.fromEntries(
+      Object.entries(parsedValue).filter((entry): entry is [string, TourPlace[]] => {
+        const [, value] = entry
+        return Array.isArray(value) && value.every(isTourPlace)
+      }),
+    )
+  } catch {
+    return {}
+  }
+}
+
+function writeStoredKeywordCache(keyword: string, places: TourPlace[]) {
+  if (typeof window === 'undefined' || places.length === 0) {
+    return
+  }
+
+  try {
+    const storedCache = readStoredKeywordCache()
+    storedCache[keyword] = places
+    window.localStorage.setItem(storageCacheKey, JSON.stringify(storedCache))
+  } catch {
+    // Storage is only an optimization. Ignore private-mode or quota failures.
+  }
+}
+
+function getStoredKeywordPlaces(keyword: string) {
+  const storedPlaces = readStoredKeywordCache()[keyword]
+
+  if (storedPlaces) {
+    keywordCache.set(keyword, storedPlaces)
+  }
+
+  return storedPlaces
 }
 
 function toTourPlace(item: UnknownRecord): TourPlace | null {
@@ -66,15 +141,31 @@ function toTourPlace(item: UnknownRecord): TourPlace | null {
   }
 }
 
-export async function searchTourPlacesByKeyword(keyword: string): Promise<TourPlace[]> {
-  const serviceKey = getString(import.meta.env.VITE_TOUR_API_KEY)
+function wait(milliseconds: number) {
+  return new Promise((resolve) => window.setTimeout(resolve, milliseconds))
+}
 
-  if (!serviceKey) {
+function fetchQueued(url: string) {
+  const request = tourApiQueue.then(async () => {
+    const response = await fetch(url)
+    await wait(850)
+    return response
+  })
+
+  tourApiQueue = request.then(
+    () => undefined,
+    () => undefined,
+  )
+
+  return request
+}
+
+async function fetchTourPlacesByKeyword(keyword: string): Promise<TourPlace[]> {
+  if (!BASE_URL) {
     return []
   }
 
   const params = new URLSearchParams({
-    serviceKey,
     MobileOS: 'ETC',
     MobileApp: 'rural-dashboard',
     _type: 'json',
@@ -85,7 +176,11 @@ export async function searchTourPlacesByKeyword(keyword: string): Promise<TourPl
   })
 
   try {
-    const response = await fetch(`${BASE_URL}/searchKeyword2?${params.toString()}`)
+    const response = await fetchQueued(`${BASE_URL}/searchKeyword2?${params.toString()}`)
+
+    if (response.status === 429) {
+      throw new TourApiQuotaError()
+    }
 
     if (!response.ok) {
       return []
@@ -102,7 +197,72 @@ export async function searchTourPlacesByKeyword(keyword: string): Promise<TourPl
     return normalizeItems(items)
       .map(toTourPlace)
       .filter((place): place is TourPlace => place !== null)
-  } catch {
+  } catch (error) {
+    if (error instanceof TourApiQuotaError) {
+      throw error
+    }
+
     return []
   }
+}
+
+export async function searchTourPlacesByKeyword(keyword: string): Promise<TourPlace[]> {
+  const normalizedKeyword = keyword.trim()
+
+  if (!normalizedKeyword) {
+    return []
+  }
+
+  const cachedPlaces = keywordCache.get(normalizedKeyword)
+
+  if (cachedPlaces) {
+    return cachedPlaces
+  }
+
+  const storedPlaces = getStoredKeywordPlaces(normalizedKeyword)
+
+  if (storedPlaces) {
+    return storedPlaces
+  }
+
+  const pendingRequest = keywordRequests.get(normalizedKeyword)
+
+  if (pendingRequest) {
+    return pendingRequest
+  }
+
+  const request = fetchTourPlacesByKeyword(normalizedKeyword).then((places) => {
+    keywordCache.set(normalizedKeyword, places)
+    writeStoredKeywordCache(normalizedKeyword, places)
+    keywordRequests.delete(normalizedKeyword)
+    return places
+  })
+
+  keywordRequests.set(normalizedKeyword, request)
+  return request
+}
+
+export async function searchTourPlacesByKeywords(keywords: readonly string[]): Promise<TourPlace[][]> {
+  const normalizedKeywords = keywords.map((keyword) => keyword.trim()).filter(Boolean)
+  const batchKey = normalizedKeywords.join('|')
+  const pendingBatchRequest = keywordBatchRequests.get(batchKey)
+
+  if (pendingBatchRequest) {
+    return pendingBatchRequest
+  }
+
+  const request = (async () => {
+    const results: TourPlace[][] = []
+
+    for (const keyword of normalizedKeywords) {
+      results.push(await searchTourPlacesByKeyword(keyword))
+    }
+
+    return results
+  })().finally(() => {
+    keywordBatchRequests.delete(batchKey)
+  })
+
+  keywordBatchRequests.set(batchKey, request)
+  return request
 }

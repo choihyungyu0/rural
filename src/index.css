@@ -3736,3 +3736,236 @@ img {
     max-width: calc(100% - 20px);
   }
 }
+
+/* Cross-page responsive fitting pass. Keep dense dashboard cards readable without horizontal spill. */
+.kpiInfo,
+.dashboardCardHeader h2,
+.analysisIntro,
+.analysisIntroText,
+.analysisNote,
+.compositionMapNote,
+.improvementHeroContent,
+.bottomInsightCard > div:last-child {
+  min-width: 0;
+}
+
+.analysisIntroText,
+.analysisNote,
+.compositionMapNote,
+.improvementHeroContent h1,
+.improvementHeroContent p,
+.bottomInsightCard p,
+.heroContent h1,
+.heroContent p {
+  overflow-wrap: anywhere;
+}
+
+.analysisKpiGrid .kpiCard {
+  display: grid;
+  grid-template-columns: minmax(96px, 118px) minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+  padding: 18px 24px;
+}
+
+.analysisKpiGrid .kpiIcon {
+  width: 118px;
+  height: 106px;
+}
+
+.analysisKpiGrid .kpiIconImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.analysisKpiGrid .kpiInfo strong {
+  max-width: 100%;
+  font-size: clamp(32px, 2vw, 38px);
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.analysisKpiGrid .kpiInfo p {
+  max-width: 100%;
+  font-size: clamp(14px, 0.9vw, 16px);
+  white-space: normal;
+  word-break: keep-all;
+}
+
+.analysisRegionMiniMap {
+  min-width: 0;
+}
+
+@media (min-width: 1181px) and (max-width: 1550px) {
+  .appHeader {
+    grid-template-columns: minmax(230px, 0.8fr) minmax(360px, 1fr) minmax(360px, 0.95fr);
+    gap: 18px;
+    padding-inline: 24px;
+  }
+
+  .brand strong {
+    font-size: 22px;
+  }
+
+  .mainNav {
+    gap: clamp(22px, 2.4vw, 42px);
+  }
+
+  .dateInfo {
+    gap: 12px;
+    padding-inline: 14px;
+    font-size: 12px;
+  }
+
+  .kpiGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .analysisKpiGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .improvementSummaryGrid {
+    gap: 16px;
+    padding-inline: 30px;
+  }
+
+  .improvementSummaryCard {
+    gap: 18px;
+    padding: 12px 22px;
+  }
+
+  .improvementSummaryIcon {
+    flex-basis: 128px;
+    width: 128px;
+    height: 96px;
+  }
+
+  .improvementSummaryIconImage {
+    max-width: 118px;
+    max-height: 88px;
+  }
+
+  .improvementSummaryText p {
+    font-size: 16px;
+  }
+
+  .improvementSummaryText strong {
+    font-size: 30px;
+  }
+
+  .improvementSummaryText span {
+    font-size: 16px;
+  }
+
+  .improvementMainGrid {
+    grid-template-columns: minmax(320px, 0.85fr) minmax(420px, 1.15fr);
+  }
+
+  .priorityCard {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1180px) {
+  html,
+  body,
+  #root,
+  .appShell {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .analysisKpiGrid .kpiCard {
+    grid-template-columns: minmax(92px, 112px) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .analysisKpiGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .analysisIntroText,
+  .analysisNote,
+  .heroContent p,
+  .improvementHeroContent p {
+    word-break: normal;
+  }
+
+  .analysisIntroText {
+    max-width: min(100%, 330px);
+    font-size: 15px;
+  }
+
+  .kpiCard,
+  .analysisKpiGrid .kpiCard {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+  }
+
+  .kpiIcon,
+  .analysisKpiGrid .kpiIcon {
+    width: 96px;
+    height: 90px;
+  }
+
+  .kpiIconImage,
+  .analysisKpiGrid .kpiIconImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .kpiInfo strong,
+  .analysisKpiGrid .kpiInfo strong {
+    font-size: clamp(28px, 8vw, 34px);
+    line-height: 1.08;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .kpiInfo p,
+  .analysisKpiGrid .kpiInfo p {
+    font-size: 14px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .donutLegend li,
+  .compositionHeader {
+    min-width: 0;
+  }
+
+  .priorityTableWrap {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 420px) {
+  .kpiCard,
+  .analysisKpiGrid .kpiCard {
+    grid-template-columns: 84px minmax(0, 1fr);
+    padding: 16px;
+  }
+
+  .kpiIcon,
+  .analysisKpiGrid .kpiIcon {
+    width: 84px;
+    height: 80px;
+  }
+
+  .kpiInfo h2,
+  .analysisKpiGrid .kpiInfo h2 {
+    font-size: 19px;
+  }
+
+  .kpiInfo strong,
+  .analysisKpiGrid .kpiInfo strong {
+    font-size: clamp(26px, 7.8vw, 31px);
+  }
+}
