@@ -3971,3 +3971,983 @@ img {
     font-size: clamp(26px, 7.8vw, 31px);
   }
 }
+
+/* Workation page */
+.workationPage {
+  min-height: calc(100vh - 74px);
+  padding: 14px 16px 10px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0, rgba(247, 250, 248, 0.98) 260px),
+    #f7faf8;
+}
+
+.workationHero {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(135deg, #123a29, #6c8e35);
+  border-radius: 14px;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.13);
+}
+
+.workationHeroImage,
+.workationHeroImage.imageFallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.workationHeroImageFallback {
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.84);
+  background:
+    radial-gradient(ellipse at 18% 102%, #1d5d33 0 18%, transparent 19%),
+    radial-gradient(ellipse at 42% 104%, #34743a 0 22%, transparent 23%),
+    radial-gradient(ellipse at 76% 96%, #8aa54a 0 20%, transparent 21%),
+    linear-gradient(135deg, #123a29, #315f39 46%, #8ea94a);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.workationHeroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(4, 22, 17, 0.88) 0%, rgba(7, 51, 35, 0.66) 42%, rgba(7, 51, 35, 0.1) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.22));
+}
+
+.workationHeroContent {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  height: 100%;
+  padding: 0 40px;
+}
+
+.workationHeroContent h1 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: 950;
+  line-height: 1.12;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.36);
+  word-break: keep-all;
+}
+
+.workationHeroContent p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 20px;
+  font-weight: 780;
+  line-height: 1.48;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  word-break: keep-all;
+}
+
+.workationHeroNotice {
+  position: absolute;
+  right: 30px;
+  bottom: 18px;
+  z-index: 2;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 14px;
+  font-weight: 850;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.46);
+}
+
+.workationKpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 12px 0;
+}
+
+.workationKpiCard {
+  display: grid;
+  grid-template-columns: minmax(122px, 168px) minmax(0, 1fr);
+  align-items: center;
+  min-height: 156px;
+  gap: 22px;
+  padding: 14px 28px;
+  background: #fff;
+  border: 1px solid rgba(215, 223, 219, 0.98);
+  border-radius: 10px;
+  box-shadow:
+    0 7px 16px rgba(15, 23, 42, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.workationKpiIcon {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+}
+
+.workationKpiIconImage,
+.workationKpiIconImage.imageFallback {
+  width: 154px;
+  height: 124px;
+  object-fit: contain;
+}
+
+.workationKpiIconImage.imageFallback {
+  padding: 10px;
+  background: linear-gradient(135deg, #ecfdf5, #eff6ff);
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+}
+
+.workationKpiIconImage.imageFallback span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.workationKpiText {
+  min-width: 0;
+}
+
+.workationKpiText h2 {
+  margin: 0 0 8px;
+  color: #111827;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.2;
+  word-break: keep-all;
+}
+
+.workationKpiText strong {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-bottom: 9px;
+  color: #15803d;
+  line-height: 1;
+  word-break: keep-all;
+}
+
+.workationKpiCard.blue .workationKpiText strong {
+  color: #2563eb;
+}
+
+.workationKpiText strong span {
+  font-size: 48px;
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+.workationKpiText strong em {
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.workationKpiText p {
+  margin: 0;
+  color: #1f2937;
+  font-size: 17px;
+  font-weight: 750;
+  word-break: keep-all;
+}
+
+.workationMainGrid {
+  display: grid;
+  grid-template-columns: minmax(330px, 0.78fr) minmax(610px, 2fr) minmax(390px, 0.98fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.workationPanel {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid rgba(215, 223, 219, 0.98);
+  border-radius: 10px;
+  box-shadow:
+    0 7px 16px rgba(15, 23, 42, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.workationPanel h2,
+.workationPanelTitleRow h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 22px;
+  font-weight: 930;
+  line-height: 1.2;
+  word-break: keep-all;
+}
+
+.workationTypeCard {
+  min-height: 344px;
+  padding: 22px 24px;
+}
+
+.workationTypeRows {
+  display: grid;
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.workationTypeRow {
+  display: grid;
+  grid-template-columns: 104px minmax(120px, 1fr) 48px;
+  align-items: center;
+  gap: 13px;
+}
+
+.workationTypeRow span {
+  color: #1f2937;
+  font-size: 16px;
+  font-weight: 850;
+  word-break: keep-all;
+}
+
+.workationTypeTrack {
+  height: 26px;
+  overflow: hidden;
+  background: #f3f4f6;
+  border: 1px solid #d9e1dc;
+  border-radius: 7px;
+}
+
+.workationTypeTrack i {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+}
+
+.workationTypeRow strong {
+  color: #111827;
+  font-size: 16px;
+  font-weight: 850;
+  text-align: right;
+}
+
+.workationTypeCard p {
+  margin: 42px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.workationMapCard {
+  min-height: 344px;
+  padding: 16px;
+}
+
+.workationPanelTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.workationSourceBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 13px;
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.workationSourceBadge::before {
+  width: 15px;
+  height: 15px;
+  margin-right: 7px;
+  content: "";
+  background: currentColor;
+  clip-path: path("M7.5 0L14 2.4V7.3C14 10.8 11.2 13.4 7.5 15C3.8 13.4 1 10.8 1 7.3V2.4L7.5 0ZM6.8 9.8L11 5.4L9.9 4.4L6.7 7.8L5.1 6.3L4 7.4L6.8 9.8Z");
+}
+
+.workationFilterChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 8px;
+}
+
+.workationFilterChips span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 13px;
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.workationFilterChips span:nth-child(2) {
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.workationFilterChips span:nth-child(3) {
+  color: #0e7490;
+  background: #ecfeff;
+  border-color: #a5f3fc;
+}
+
+.workationFilterChips span:nth-child(4) {
+  color: #7c3aed;
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+}
+
+.workationFilterChips span:nth-child(5) {
+  color: #c2410c;
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.workationMap {
+  position: relative;
+  height: 252px;
+  overflow: hidden;
+  background: #eef6f1;
+  border: 1px solid #d8e2e9;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.workationMapCanvas,
+.workationMap .leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+}
+
+.workationMap .leaflet-control-attribution {
+  max-width: 250px;
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+.workationMarkerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+}
+
+.workationMarker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 2px rgba(15, 23, 42, 0.1),
+    0 5px 10px rgba(15, 23, 42, 0.25);
+  font-size: 11px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.workationMarker svg,
+.workationMarkerGlyph,
+.workationMarker em {
+  position: relative;
+  z-index: 1;
+}
+
+.workationMarker svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.workationMarkerGlyph {
+  font: inherit;
+}
+
+.workationMarker em {
+  position: absolute;
+  top: -7px;
+  right: -9px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 3px 7px rgba(15, 23, 42, 0.22);
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.workationMarker.grouped {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  box-shadow:
+    0 0 0 2px rgba(15, 23, 42, 0.08),
+    0 6px 12px rgba(15, 23, 42, 0.24);
+}
+
+.workationMarker.grouped svg {
+  width: 17px;
+  height: 17px;
+}
+
+.workationMarker.hadong,
+.workationLegendBox.hadong {
+  background: #15803d;
+}
+
+.workationMarker.hadong em {
+  color: #15803d;
+}
+
+.workationMarker.gurye,
+.workationLegendBox.gurye {
+  background: #2563eb;
+}
+
+.workationMarker.gurye em {
+  color: #2563eb;
+}
+
+.workationMapLegend,
+.workationMapSource,
+.workationMapPrivacyNote {
+  position: absolute;
+  z-index: 500;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.93);
+  border: 1px solid rgba(203, 213, 225, 0.88);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+  backdrop-filter: blur(8px);
+}
+
+.workationMapLegend {
+  right: 12px;
+  bottom: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 6px 12px;
+  padding: 9px 11px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.workationMapLegend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.workationLegendBox {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.workationMapSource {
+  left: 12px;
+  bottom: 12px;
+  max-width: calc(100% - 260px);
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.workationMapPrivacyNote {
+  left: 12px;
+  top: 12px;
+  max-width: min(440px, calc(100% - 24px));
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.workationPopup {
+  display: grid;
+  gap: 7px;
+  min-width: 210px;
+  max-width: 250px;
+  color: #0f172a;
+}
+
+.workationPopup h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 950;
+  line-height: 1.3;
+}
+
+.workationPopupRegion {
+  justify-self: start;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.workationPopupRegion.hadong {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.workationPopupRegion.gurye {
+  color: #1d4ed8;
+  background: #dbeafe;
+}
+
+.workationPopup dl {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+}
+
+.workationPopup div {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 8px;
+}
+
+.workationPopup dt,
+.workationPopup dd {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.workationPopup dt {
+  color: #64748b;
+  font-weight: 850;
+}
+
+.workationPopup dd {
+  color: #0f172a;
+  font-weight: 850;
+  word-break: keep-all;
+}
+
+.workationPopupList {
+  display: grid;
+  gap: 4px;
+  margin: 2px 0 0;
+  padding: 8px 0 0;
+  border-top: 1px solid #e2e8f0;
+  list-style: none;
+}
+
+.workationPopupList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.workationPopupList span {
+  color: #334155;
+  font-weight: 800;
+}
+
+.workationPopupList strong {
+  flex: 0 0 auto;
+  color: #15803d;
+  font-weight: 950;
+}
+
+.workationCandidateCard {
+  min-height: 344px;
+  padding: 18px 16px;
+}
+
+.workationCandidateTableWrap {
+  margin-top: 14px;
+  overflow-x: auto;
+}
+
+.workationCandidateTable {
+  width: 100%;
+  border-collapse: collapse;
+  color: #111827;
+  font-size: 14px;
+}
+
+.workationCandidateTable th {
+  height: 40px;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #edf2f7;
+  font-weight: 850;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.workationCandidateTable td {
+  height: 46px;
+  border-bottom: 1px solid #edf2f7;
+  font-weight: 760;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.workationCandidateTable td:nth-child(2) {
+  padding-left: 10px;
+  text-align: left;
+}
+
+.workationRankBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 27px;
+  color: #fff;
+  background: #15803d;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.workationScoreBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  min-height: 26px;
+  padding: 0 11px;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.workationScoreBadge.high {
+  background: #15803d;
+}
+
+.workationScoreBadge.midHigh {
+  background: #2563eb;
+}
+
+.workationScoreBadge.middle {
+  background: #f59e0b;
+}
+
+.workationScoreBadge.low {
+  background: #64748b;
+}
+
+.workationBottomGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.98fr) minmax(0, 1fr);
+  gap: 14px;
+}
+
+.workationInsightCard {
+  min-height: 150px;
+  padding: 20px 28px;
+}
+
+.workationInsightCard h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  color: #0f172a;
+  font-size: 22px;
+  font-weight: 930;
+}
+
+.workationTitleIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: #166534;
+}
+
+.workationInsightList {
+  display: grid;
+  gap: 9px;
+  margin: 15px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.workationInsightList li {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  color: #26352e;
+  font-size: 15px;
+  font-weight: 760;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.workationInsightList svg {
+  color: #15803d;
+}
+
+.workationEffectList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 0;
+  min-height: 86px;
+  margin-top: 18px;
+}
+
+.workationEffectItem {
+  display: flex;
+  align-items: center;
+  min-height: 76px;
+  gap: 14px;
+  padding: 0 20px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.workationEffectItem:first-child {
+  padding-left: 0;
+}
+
+.workationEffectItem:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.workationEffectIcon {
+  display: inline-grid;
+  flex: 0 0 58px;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  color: #166534;
+  border: 2px solid #15803d;
+  border-radius: 999px;
+}
+
+.workationEffectItem p {
+  margin: 0;
+  color: #26352e;
+  font-size: 15px;
+  font-weight: 780;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.workationDataNote {
+  margin: 9px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 720;
+  line-height: 1.35;
+  text-align: center;
+  word-break: keep-all;
+}
+
+@media (min-width: 1181px) {
+  .appHeader {
+    grid-template-columns: minmax(260px, 0.8fr) minmax(700px, 1.55fr) minmax(500px, 1fr);
+  }
+}
+
+@media (min-width: 1181px) and (max-width: 1550px) {
+  .appHeader {
+    grid-template-columns: minmax(220px, 0.7fr) minmax(560px, 1.35fr) minmax(320px, 0.85fr);
+    gap: 14px;
+    padding-inline: 20px;
+  }
+
+  .mainNav {
+    justify-content: flex-start;
+    gap: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .mainNav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dateInfo {
+    gap: 10px;
+    padding-inline: 12px;
+    font-size: 11.5px;
+  }
+
+  .workationKpiGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .workationMainGrid {
+    grid-template-columns: minmax(320px, 0.8fr) minmax(520px, 1.35fr);
+  }
+
+  .workationCandidateCard {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1180px) {
+  .workationPage {
+    padding: 12px 14px 24px;
+  }
+
+  .workationHero {
+    height: 220px;
+  }
+
+  .workationKpiGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .workationMainGrid,
+  .workationBottomGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .workationMap {
+    height: 320px;
+  }
+}
+
+@media (max-width: 760px) {
+  .workationHero {
+    height: auto;
+    min-height: 260px;
+  }
+
+  .workationHeroContent {
+    padding: 32px 22px 72px;
+  }
+
+  .workationHeroContent h1 {
+    font-size: 30px;
+  }
+
+  .workationHeroContent p {
+    font-size: 16px;
+  }
+
+  .workationHeroNotice {
+    right: 22px;
+    left: 22px;
+    bottom: 22px;
+  }
+
+  .workationKpiGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .workationKpiCard {
+    grid-template-columns: 108px minmax(0, 1fr);
+    gap: 18px;
+    padding: 16px 18px;
+  }
+
+  .workationKpiIconImage,
+  .workationKpiIconImage.imageFallback {
+    width: 104px;
+    height: 92px;
+  }
+
+  .workationKpiText strong span {
+    font-size: 38px;
+  }
+
+  .workationPanelTitleRow {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .workationMap {
+    height: 330px;
+  }
+
+  .workationMapLegend {
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    justify-content: start;
+  }
+
+  .workationMapSource {
+    left: 10px;
+    bottom: 92px;
+    max-width: calc(100% - 20px);
+  }
+
+  .workationMapPrivacyNote {
+    left: 10px;
+    right: 10px;
+    max-width: none;
+    border-radius: 8px;
+  }
+
+  .workationTypeRow {
+    grid-template-columns: 92px minmax(100px, 1fr) 44px;
+  }
+
+  .workationInsightCard {
+    padding: 18px 20px;
+  }
+
+  .workationEffectList {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .workationEffectItem {
+    padding: 0;
+    border-right: 0;
+  }
+}
