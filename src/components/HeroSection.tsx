@@ -2,18 +2,18 @@ import { overviewAssets } from '../data/overviewData'
 import { LocalImage } from './LocalImage'
 
 type HeroSectionProps = {
-  notice: string
+  notice?: string
 }
 
-export function HeroSection({ notice }: HeroSectionProps) {
+export function HeroSection({ notice }: HeroSectionProps = {}) {
   return (
     <section className="heroSection">
       <LocalImage
         src={overviewAssets.heroBg}
-        alt="하동과 구례 농촌관광 풍경"
+        alt="하동과 구례 농촌관광 배경"
         className="heroImage"
         fallbackClassName="heroImageFallback"
-        fallbackLabel="하동·구례 농촌관광 풍경"
+        fallbackLabel="하동·구례 농촌관광 배경"
       />
       <div className="heroOverlay" />
 
@@ -33,7 +33,7 @@ export function HeroSection({ notice }: HeroSectionProps) {
         </p>
       </div>
 
-      <p className="heroNotice">{notice}</p>
+      {notice ? <p className="heroNotice">{notice}</p> : null}
     </section>
   )
 }

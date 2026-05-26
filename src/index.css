@@ -854,7 +854,7 @@ img {
 
 .courseCard {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr) 48px;
+  grid-template-columns: 178px minmax(0, 1fr) 116px;
   gap: 18px;
   align-items: center;
   min-height: 128px;
@@ -894,7 +894,7 @@ img {
   font-size: 18px;
   font-weight: 900;
   line-height: 1.25;
-  white-space: nowrap;
+  word-break: keep-all;
 }
 
 .badgeRow {
@@ -941,17 +941,19 @@ img {
   display: grid;
   place-items: center;
   justify-self: center;
-  width: 42px;
-  min-width: 42px;
-  max-width: 42px;
+  width: 112px;
+  min-width: 112px;
+  max-width: 112px;
   height: 42px;
   min-height: 42px;
   padding: 0;
   color: #fff;
-  border-radius: 999px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 14px;
   font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
   box-shadow: 0 8px 14px rgba(15, 23, 42, 0.16);
 }
 
@@ -1013,7 +1015,7 @@ img {
   }
 
   .courseCard {
-    grid-template-columns: 150px minmax(0, 1fr) 48px;
+    grid-template-columns: 150px minmax(0, 1fr) 112px;
   }
 }
 
@@ -1223,7 +1225,7 @@ img {
 
   .courseButton {
     justify-self: end;
-    width: 42px;
+    width: 112px;
   }
 
   .courseImage {

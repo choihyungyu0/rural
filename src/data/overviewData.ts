@@ -22,6 +22,7 @@ export type CourseItem = {
   route: string
   imageSrc: string
   imageAlt: string
+  buttonLabel: string
   buttonTone: 'green' | 'blue'
 }
 
@@ -33,7 +34,7 @@ export const overviewAssets = {
   suitcaseIcon: '/images/overview/icon-suitcase.png',
 }
 
-export const navItems = ['개요', '체류·소비 분석', '개선 제안']
+export const navItems = ['개요', '방문 현황', '체류·소비 분석', '인사이트', '개선 제안']
 
 export const kpiItems: KpiItem[] = [
   {
@@ -98,6 +99,7 @@ export const courseItems: CourseItem[] = [
     route: '화개장터 → 야생차 체험 → 평사리 → 산수유마을 → 화엄사',
     imageSrc: '/images/overview/course-nature.png',
     imageAlt: '하동·구례 자연 힐링 코스 이미지',
+    buttonLabel: '코스 상세보기',
     buttonTone: 'green',
   },
   {
@@ -106,6 +108,7 @@ export const courseItems: CourseItem[] = [
     route: '화개장터 → 지역 미식 체험 → 야생차 체험 → 한옥 숙박',
     imageSrc: '/images/overview/course-food.png',
     imageAlt: '미식과 장터 체험 코스 이미지',
+    buttonLabel: '코스 상세보기',
     buttonTone: 'blue',
   },
 ]

@@ -6,8 +6,6 @@ import {
   isNavigationHash,
   type NavigationHash,
 } from './data/navigation'
-import { AnalysisPage } from './pages/AnalysisPage'
-import { ImprovementPage } from './pages/ImprovementPage'
 import { OverviewPage } from './pages/OverviewPage'
 
 function getActiveHash(): NavigationHash {
@@ -35,14 +33,6 @@ function App() {
 function ActivePage({ hash }: { hash: NavigationHash }) {
   if (hash === '#overview') {
     return <OverviewPage />
-  }
-
-  if (hash === '#improvement') {
-    return <ImprovementPage />
-  }
-
-  if (hash === '#analysis') {
-    return <AnalysisPage />
   }
 
   return <PlaceholderPage title={getNavigationItemByHash(hash).label} />
