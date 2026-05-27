@@ -6,7 +6,10 @@ import {
   isNavigationHash,
   type NavigationHash,
 } from './data/navigation'
+import { AnalysisPage } from './pages/AnalysisPage'
+import { ImprovementPage } from './pages/ImprovementPage'
 import { OverviewPage } from './pages/OverviewPage'
+import { WorkationPage } from './pages/WorkationPage'
 
 function getActiveHash(): NavigationHash {
   const currentHash = window.location.hash
@@ -33,6 +36,18 @@ function App() {
 function ActivePage({ hash }: { hash: NavigationHash }) {
   if (hash === '#overview') {
     return <OverviewPage />
+  }
+
+  if (hash === '#analysis') {
+    return <AnalysisPage />
+  }
+
+  if (hash === '#improvement') {
+    return <ImprovementPage />
+  }
+
+  if (hash === '#workation') {
+    return <WorkationPage />
   }
 
   return <PlaceholderPage title={getNavigationItemByHash(hash).label} />

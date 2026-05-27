@@ -34,7 +34,7 @@ export const overviewAssets = {
   suitcaseIcon: '/images/overview/icon-suitcase.png',
 }
 
-export const navItems = ['개요', '방문 현황', '체류·소비 분석', '인사이트', '개선 제안']
+export const navItems = ['개요', '체류·소비 분석', '개선 제안', '워케이션·유휴공간']
 
 export const kpiItems: KpiItem[] = [
   {
